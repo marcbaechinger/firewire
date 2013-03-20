@@ -4,15 +4,16 @@ This is a first application made with node.js for my convenience reasons. As it'
 
 ## Install and run
 
-+ install decent node js version<br/>
-    https://github.com/joyent/node/wiki/Installation (on mac I would go for homebrew)
+install decent node js version: <i>https://github.com/joyent/node/wiki/Installation</i><br/>
+(on mac I would go for homebrew)
 	
-+  \# git clone git@github.com:marcbaechinger/firewire.git
-+  # cd firewire
-+  # npm install
-+  # node app.js
+<pre><code># git clone git@github.com:marcbaechinger/firewire.git
+# cd firewire
+# npm install
+# node app.js
+</code></pre>
 
-No start a browser and go to http://localhost:3000/index.html 
+Now start a browser and go to http://localhost:3000/index.html 
 
 
 ## Use the application
