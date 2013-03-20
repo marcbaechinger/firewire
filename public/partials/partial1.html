@@ -2,14 +2,14 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
 		<a
-href="#" class="brand">&nbsp;&nbsp;&nbsp;&nbsp;FireWire - Zühlke Developer Days 2013</a>
+href="#" class="brand">FireWire - Zühlke Developer Days 2013</a>
 		<nav>
 			<button ng-disabled="!model.challengeStarted" reset-challenge class="btn btn-mini">reset</button>
 			<button ng-disabled="model.gameStarted" ng-click="startGame()" class="btn btn-mini">start game</button>
-		<nav>
+		</nav>
 	</div>
 </div>
-<article class="container-fluid" capture-game-keys>
+<article capture-game-keys>
 	<aside id="panel-left">
 		<div id="time">{{model.time | minute}}:{{model.time | second}}</div>
 		<div id="errors">{{model.errors.length}} failures</div>
@@ -25,7 +25,7 @@ href="#" class="brand">&nbsp;&nbsp;&nbsp;&nbsp;FireWire - Zühlke Developer Days
 	
 	<section class="pictures">
 		<div ng-repeat="pic in model.pictures" class="image-container">
-			<img src="{{pic.base64}}" width="{{pic.width/2}}" height="{{pic.height/2}}"/>
+			<img src="{{pic.base64}}" width="{{pic.width}}" height="{{pic.height}}"/>
 		</div>
 	</section>
 	<div class="video-container">

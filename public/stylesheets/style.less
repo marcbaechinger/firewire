@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url(../img/bg.jpg);
 }
@@ -13,12 +13,18 @@ footer {
 	bottom: 4px;
 	right: 20px;
 }
+article {
+	margin-top: 34px;
+}
+.navbar-fixed-top .navbar-inner {
+	height: 22px;
+}
 .navbar nav {
 	float: right;
 	margin-right: 8px;
 	margin-top: 6px;
 	width: 200px;
-	height: 36px;
+	height: 16px;
 	&:hover .btn {
 		display: block;
 	}
@@ -28,6 +34,20 @@ footer {
 		margin-left: 8px;
 	}
 }
+.navbar .btn {
+	margin-top: -2px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.navbar .brand {
+	font-size: 12px;
+	margin-left: 2px;
+	padding-top: 4px;
+}
+.navbar-inner {
+	min-height: 14px;
+	height: 28px;
+}
 .video-container {
 	display: none;
 	float: left;
@@ -35,13 +55,13 @@ footer {
 #panel-left {
 	position: absolute;
 	left: 20px;
-	top: 64px;
+	top: 40px;
 	width: 120px;
 }
 #panel-right {
 	position: absolute;
-	right: 20px;
-	top: 64px;
+	left: 20px;
+	bottom: 0;
 	width: 140px;
 }
 #time,
@@ -112,10 +132,9 @@ footer {
 	background-color: #990000;
 }
 .pictures {
-	width: 1040px;
 	margin-top: 12px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 238px;
+	margin-right: 12px;
 	.image-container {
 		float: left;
 		background-color: #fff;
@@ -124,13 +143,16 @@ footer {
 		display: inline-block;
 		padding: 4px;
 		margin-bottom: 18px;
-		margin-right: 18px;
+		margin-right: 36px;
 		/*-moz-transform-origin: 0 120px;
 		-webkit-transform-origin: 0 120px;
 		transform-origin: 0 120px;*/
 		img {
 			border-radius: 4px;
 		}
+	}
+	.image-container:nth-child(3n + 3) {
+		margin-right: 0;
 	}
 	.image-container:first-child {
 		-moz-animation-delay: 0.1s;

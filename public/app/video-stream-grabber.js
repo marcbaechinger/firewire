@@ -35,8 +35,8 @@
 				postProcessor(that.context, that.frameWidth * that.scale, that.frameHeight * that.scale);
 			}
 			that.emit("frame", {
-				width: that.frameWidth,
-				height: that.frameHeight,
+				width: that.frameWidth * that.scale,
+				height: that.frameHeight * that.scale,
 				/*data: that.context.getImageData(0, 0, that.frameWidth * that.scale, that.frameHeight * that.scale),*/
 				base64: that.canvas.toDataURL()
 			});

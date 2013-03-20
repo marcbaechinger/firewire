@@ -5,6 +5,7 @@
 
 function GameController($scope) {
 	var that = this,
+		videoScaleFactor = 0.49,
 		video = document.querySelector("#video"),
 		audioCamera = document.querySelector("#audioCamera"),
 		lightBox = angular.element(document.querySelector(".pictures")),
@@ -116,7 +117,7 @@ function GameController($scope) {
 				frameGrabber = new firewire.VideoStreamGrabber({
 					videoSelector: "#video",
 					frameListener: frameListener,
-					scale: 0.5
+					scale: videoScaleFactor
 				});
 				$scope.$apply(function () {
 					$scope.model.gameStarted = true;
