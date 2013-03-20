@@ -2,6 +2,8 @@
 
 This is a first application made with node.js for my convenience reasons. As it's basically a static HTML app it easy to pull it out on othe http platforms.
 
+## Install and run
+
 + install decent node js version<br/>
     https://github.com/joyent/node/wiki/Installation (on mac I would go for homebrew)
 	
@@ -11,6 +13,9 @@ This is a first application made with node.js for my convenience reasons. As it'
 +  # node app.js
 
 No start a browser and go to http://localhost:3000/index.html 
+
+
+## Use the application
 
 Currently tested on osx with Chrome and Firefox Aurora. 
 
