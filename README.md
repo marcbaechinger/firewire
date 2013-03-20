@@ -41,6 +41,6 @@ Currently tested on osx with Chrome and Firefox Aurora.
 10. At each of these event a picture is taken and displayed in the browser (no backend yet).
 
 
-
+Once hte end is reached the unveiled 'resert' button restarts the 'challange'.
 
 
