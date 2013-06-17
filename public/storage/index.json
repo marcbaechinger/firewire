@@ -1,38 +1,26 @@
 [
     {
         "id": 1,
-        "image": "s999$s.2.as",
-        "timestamp": 1029338522,
-        "step": "gamestart"
-    },
-    {
-        "id": 1,
-        "image": "s999$s.2.as",
-        "timestamp": 1029338522,
-        "step": "gamestart"
+        "image": "s9safasdkl",
+        "timestamp": 293482921,
+        "step": "failure"
     },
     {
         "id": 1,
         "image": "s9safasdkl",
         "timestamp": 293482921,
-        "step": "milestone1"
+        "step": "failure"
     },
     {
         "id": 1,
         "image": "s9safasdkl",
         "timestamp": 293482921,
-        "step": "milestone1"
+        "type": "game-complete"
     },
     {
         "id": 1,
         "image": "s9safasdkl",
         "timestamp": 293482921,
-        "step": "milestone1"
-    },
-    {
-        "id": 1,
-        "image": "s9safasdkl",
-        "timestamp": 293482921,
-        "step": "milestone1"
+        "type": "game-complete"
     }
 ]
