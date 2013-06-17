@@ -193,13 +193,29 @@ article {
   height: 60%;
   right: 20%;
   left: 20%;
-  top: 10%;
+  top: 20%;
 }
 .overlay h2 {
   background-color: #333;
   color: #fff;
   text-align: center;
   margin-top: 30px;
+}
+.overlay p {
+  text-align: center;
+  font-size: 1.4em;
+}
+.overlay #qrcode img {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+.overlay.show {
+  display: block;
+}
+.hidden {
+  display: block;
 }
 @-webkit-keyframes takePhoto {
   50% {
