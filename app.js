@@ -1,4 +1,4 @@
-var fs = require('fs');
+var firewireStorage = require('./firewireStorage.js');
 
 /**
  * Module dependencies.
@@ -42,40 +42,8 @@ app.post('/api/gamestep', function(req, res) {
 	gamestep.timestamp = req.body.timestamp;
 	gamestep.step = req.body.step;
 
-	var outputFilename = __dirname + "/storage/games/" + "gamesteps_" + gamestep.id + ".json";
-
-	fs.exists(outputFilename, function(exists) {
-		if (exists) {
-			readAndWriteToExistingFile();
-		} else {
-			writeToNewFile();
-		}
-
-	});
-
-	// read existing file and append current gamestep
-	function readAndWriteToExistingFile() {
-		fs.readFile(outputFilename, function(err, data) {
-			if (err) {
-				console.log(err);
-			} else {
-				gamesteps = JSON.parse(data);
-				writeToNewFile();
-			}
-		});
-	}
-
-	// add current gamestep to gamesteps array and write array into file
-	function writeToNewFile() {
-		gamesteps.push(gamestep);
-
-		fs.writeFile(outputFilename, JSON.stringify(gamesteps, null, 4), function(err) {
-			if (err) {
-				console.log(err);
-			}
-		});
-	}
-
+	firewireStorage.saveGamestep(gamestep);
+	
 	return res.send(gamestep);
 });
 
