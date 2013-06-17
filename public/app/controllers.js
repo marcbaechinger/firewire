@@ -5,7 +5,7 @@
 
 function GameController($scope, backend, uuid) {
 	var that = this,
-		videoScaleFactor = 0.49,
+		videoScaleFactor = 0.55,
 		video = document.querySelector("#video"),
 		audioCamera = document.querySelector("#audioCamera"),
 		lightBox = angular.element(document.querySelector(".pictures")),
