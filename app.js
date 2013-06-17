@@ -1,4 +1,4 @@
-var firewireStorage = require('./firewireStorage.js');
+var storageProvider = require('./storageProvider.js');
 
 /**
  * Module dependencies.
@@ -29,20 +29,18 @@ app.configure('development', function() {
 
 app.get('/', routes.index);
 
+// initialize cache used for index
+storageProvider.readFileToIndex();
+
 // REST service to persist game steps into file using a POST request
 app.post('/api/gamestep', function(req, res) {
+	var gamestep = req.body;
+
 	console.log("POST: ");
-	console.log(req.body);
+	console.log(gamestep);
 
-	var gamesteps = new Array();
-
-	var gamestep = new Object();
-	gamestep.id = req.body.id;
-	gamestep.image = req.body.image;
-	gamestep.timestamp = req.body.timestamp;
-	gamestep.step = req.body.step;
-
-	firewireStorage.saveGamestep(gamestep);
+	// save current step into storage and add game to index if necessary
+	storageProvider.saveStep(gamestep);
 	
 	return res.send(gamestep);
 });
