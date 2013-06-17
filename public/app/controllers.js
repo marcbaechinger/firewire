@@ -26,11 +26,12 @@ function GameController($scope, backend, uuid) {
 				console.log("unshift frame into pic array");
 				$scope.model.pictures.unshift(frame);
 				backend.sendStepEvent({
-					id: $scope.model.gameId, 
+					id: $scope.model.gameId,
+					player: $scope.model.player,
 					image: frame.base64,
 					timestamp: new Date(),
 					duration: $scope.model.time,
-					step: $scope.model.lastStep
+					type: $scope.model.lastStep
 				});
 			});
 		},
@@ -67,6 +68,7 @@ function GameController($scope, backend, uuid) {
 	
 	$scope.model = {
 		pictures: [],
+		player: "Charles Aznavour",
 		lastStep: undefined,
 		gameId: undefined,
 		errors: [],
