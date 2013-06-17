@@ -64,7 +64,7 @@ function GameController($scope, backend, uuid) {
 			$scope.takePicture(msg, "rgba(200, 0, 0, 1)");
 		};
 		
-	logo.src = '/img/logo.png';
+	logo.src = '/gameapp/img/logo.png';
 	
 	$scope.model = {
 		pictures: [],
