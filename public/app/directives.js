@@ -3,7 +3,7 @@
 /* Directives */
 
 
-angular.module('myApp.directives', []).
+angular.module('firewire.directives', []).
   directive('captureGameKeys', function() {
 	var lastProcessed = 0,
 		isReady = function () {

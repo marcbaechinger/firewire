@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="ng-scope" ng-app="myApp">
+<html class="ng-scope" ng-app="firewire" ng-controller="GameController">
 	<head>
 		<meta name="viewport" content="width=device-width">
 		<title>FireWire</title>
@@ -8,10 +8,45 @@
 		<link rel="stylesheet" href="/stylesheets/style.css">
 	</head>
 	<body>
-		<div class="ng-view"></div>
-
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<a
+		href="#" class="brand">FireWire - Zühlke Developer Days 2013</a>
+				<nav>
+					<button ng-disabled="!model.challengeStarted" reset-challenge class="btn btn-mini">reset</button>
+					<button ng-disabled="model.gameStarted" ng-click="startGame()" class="btn btn-mini">start game</button>
+				</nav>
+			</div>
+		</div>
+		<article capture-game-keys>
+			<aside id="panel-left">
+				<div id="time">{{model.time | minute}}:{{model.time | second}}</div>
+				<div id="errors">{{model.errors.length}} failures</div>
+			</aside>
+	
+			<aside id="panel-right">
+				<div id="started" class="milestone">started</div>
+				<div id="m1" class="milestone">1</div>
+				<div id="m2" class="milestone">2</div>
+				<div id="m3" class="milestone">3</div>
+				<div id="completed" class="milestone">completed</div>
+			</aside>
+	
+			<section class="pictures">
+				<div ng-repeat="pic in model.pictures" class="image-container">
+					<img src="{{pic.base64}}" width="{{pic.width}}" height="{{pic.height}}"/>
+				</div>
+			</section>
+			<div class="video-container">
+				<video id="video" width="640" height="480" autoplay="autoplay"></video>
+			</div>
+			<audio id="audioCamera" preload="auto" controls style="display: none;">
+				<source src="/audio/camera.mp3" type="audio/mpeg"/>
+				<source src="/audio/camera.ogg" type="audio/ogg"/>
+			</audio>
+		</article>
 		<footer>
-			brought to you by JIC members Andreas Ettisberger, Marc Baur, Dominik Erni, Benjamin Müller, Marc Bächinger
+			brought to you by JIC members Marc Baur, Dominik Erni, Benjamin Müller, Marc Bächinger
 		</footer>
 		<script src="/javascripts/angular.js"></script>
 		<script src="/app/namespace.js"></script>

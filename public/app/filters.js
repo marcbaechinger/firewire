@@ -2,7 +2,7 @@
 
 /* Filters */
 
-angular.module('myApp.filters', []).
+angular.module('firewire.filters', []).
   filter('minute', function() {
     return function(seconds) {
       return Math.floor(seconds / 60);

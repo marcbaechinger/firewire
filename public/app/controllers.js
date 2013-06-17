@@ -216,8 +216,3 @@ GameController.prototype.getUserMedia = function () {
 		navigator.mozGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
 };
 GameController.$inject = ["$scope"];
-
-
-function MyCtrl2() {
-}
-MyCtrl2.$inject = [];
