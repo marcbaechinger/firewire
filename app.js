@@ -1,12 +1,16 @@
 var storageProvider = require('./storageProvider.js');
-
+var notificationProvider = require('./notificationProvider.js');
 /**
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path');
+var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), socketio = require('socket.io');
 
 var app = express();
+var server = http.createServer(app);
+var io = socketio.listen(server);
+
+var socketListeners = {};
 
 app.configure(function() {
 	app.set('port', process.env.PORT || 3000);
@@ -29,6 +33,11 @@ app.configure('development', function() {
 
 app.get('/', routes.index);
 
+io.sockets.on('connection', function(socket) {
+	socketListeners[socket.id] = socket;
+	console.log("Socket Listener added");
+});
+
 // initialize cache used for index
 storageProvider.readFileToIndex();
 
@@ -37,14 +46,18 @@ app.post('/api/gamestep', function(req, res) {
 	var gamestep = req.body;
 
 	console.log("POST: ");
-	console.log(gamestep);
 
+	// iterate over all socket listeners and emit notification event
+	Object.keys(socketListeners).forEach(function(key) {
+		console.log(socketListeners[key]);
+		socketListeners[key].emit('foo', 'bar');
+	});
 	// save current step into storage and add game to index if necessary
 	storageProvider.saveStep(gamestep);
-	
+	notificationProvider.notifyLiveView(gamestep);
 	return res.send(gamestep);
 });
 
-http.createServer(app).listen(app.get('port'), function() {
+server.listen(app.get('port'), function() {
 	console.log("Express server listening on port " + app.get('port'));
 });
