@@ -214,8 +214,13 @@ function GameController($scope, backend, uuid) {
 		
 	};
 	$scope.wireContact = function () {
-		addError($scope, "Outsch... failure!");
+		$scope.model.challengeCompleted = true;
 		$scope.model.lastStep = "failure";
+		addError($scope, "Outsch... failure!");
+		
+		milestonePanel.addClass("completed");
+		clearClockInterval();
+		lightBox.addClass("finished");
 	};
 	$scope.milestone1 = function () {
 		$scope.model.lastStep = "milestone-1";
