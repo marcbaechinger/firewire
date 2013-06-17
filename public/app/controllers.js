@@ -3,7 +3,7 @@
 /* Controllers */
 
 
-function GameController($scope) {
+function GameController($scope, backend, uuid) {
 	var that = this,
 		videoScaleFactor = 0.49,
 		video = document.querySelector("#video"),
@@ -23,7 +23,15 @@ function GameController($scope) {
 		frameListener = function (frame) {
 			$scope.$apply(function () {
 				frameGrabber.stopCapturing();
+				console.log("unshift frame into pic array");
 				$scope.model.pictures.unshift(frame);
+				backend.sendStepEvent({
+					id: $scope.model.gameId, 
+					image: frame.base64,
+					timestamp: new Date(),
+					duration: $scope.model.time,
+					step: $scope.model.lastStep
+				});
 			});
 		},
 		milestone = function (num) {
@@ -59,6 +67,8 @@ function GameController($scope) {
 	
 	$scope.model = {
 		pictures: [],
+		lastStep: undefined,
+		gameId: undefined,
 		errors: [],
 		milestones: [],
 		gameStarted: false,
@@ -179,6 +189,7 @@ function GameController($scope) {
 		console.log("challengeStart()");
 		if (!$scope.model.challengeStarted) {
 			$scope.model.challengeStarted = true;
+			$scope.model.lastStep = "game-start";
 			$scope.takePicture("Challenge started!", "orange");
 			milestonePanel.addClass("started");
 			if (!clockInterval) {
@@ -188,25 +199,32 @@ function GameController($scope) {
 					});
 				}, 1000); 
 			}
+			$scope.model.gameId = uuid();
 		}
 	};
 	$scope.challengeEnd = function () {
 		$scope.model.challengeCompleted = true;
+		$scope.model.lastStep = "game-complete";
 		$scope.takePicture("Challenge finished!", "orange");
 		milestonePanel.addClass("completed");
 		clearClockInterval();
 		lightBox.addClass("finished");
+		
 	};
 	$scope.wireContact = function () {
 		addError($scope, "Outsch... failure!");
+		$scope.model.lastStep = "failure";
 	};
 	$scope.milestone1 = function () {
+		$scope.model.lastStep = "milestone-1";
 		milestone(1);
 	};
 	$scope.milestone2 = function () {
+		$scope.model.lastStep = "milestone-2";
 		milestone(2);
 	};
 	$scope.milestone3 = function () {
+		$scope.model.lastStep = "milestone-3";
 		milestone(3);
 	};
 };
@@ -215,4 +233,4 @@ GameController.prototype.getUserMedia = function () {
 	(navigator.getUserMedia || navigator.webkitGetUserMedia ||
 		navigator.mozGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
 };
-GameController.$inject = ["$scope"];
+GameController.$inject = ["$scope", "backend", "uuid"];
