@@ -1,7 +1,3 @@
-ResultApp.controller('NavigationController', function($scope, $route) {
-	$scope.$route = $route;
-});
-
 ResultApp.controller('ResultController', function($scope, Result, gamestepper) {
 	$scope.results = Result.findAllGames();
 	gamestepper.register($scope, function(gamestep) {
@@ -14,4 +10,7 @@ ResultApp.controller('ResultController', function($scope, Result, gamestepper) {
 ResultApp.controller('ResultDetailController', function($scope, $routeParams, Result) {
 	$scope.params = $routeParams;
 	$scope.gamesteps = Result.findGamesteps($routeParams.gameId);
+	$scope.gamesteps.$then(function(httpResponse){
+		$scope.player = $scope.gamesteps[0].player;
+	});
 });

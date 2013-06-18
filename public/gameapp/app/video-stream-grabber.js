@@ -30,16 +30,20 @@
 		var that = this;
 		
 		this.interval = window.setInterval(function () {
+			var msg;
 			that.context.drawImage(that.video, 0, 0, that.frameWidth * that.scale, that.frameHeight * that.scale);
+
+			msg = {
+				width: that.frameWidth * that.scale,
+				height: that.frameHeight * that.scale,
+				base64: that.canvas.toDataURL('image/jpeg', 0.5)
+			};
+			
 			if (postProcessor) {
 				postProcessor(that.context, that.frameWidth * that.scale, that.frameHeight * that.scale);
 			}
-			that.emit("frame", {
-				width: that.frameWidth * that.scale,
-				height: that.frameHeight * that.scale,
-				/*data: that.context.getImageData(0, 0, that.frameWidth * that.scale, that.frameHeight * that.scale),*/
-				base64: that.canvas.toDataURL('image/jpeg', 0.5)
-			});
+			msg.rawImage = that.canvas.toDataURL('image/jpeg');
+			that.emit("frame", msg);
 		}, 1000 / that.frameRate);
 	};
 	
