@@ -50,7 +50,7 @@ app.post('/api/gamestep', function(req, res) {
 	// iterate over all socket listeners and emit notification event
 	Object.keys(socketListeners).forEach(function(key) {
 		console.log(socketListeners[key]);
-		socketListeners[key].emit('foo', 'bar');
+		socketListeners[key].emit('gamestep', gamestep);
 	});
 	// save current step into storage and add game to index if necessary
 	storageProvider.saveStep(gamestep);
