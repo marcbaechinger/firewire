@@ -5,8 +5,10 @@ ResultApp.controller('NavigationController', function($scope, $route) {
 ResultApp.controller('ResultController', function($scope, $routeParams, Result, gamestepper) {
 	$scope.params = $routeParams;
 	$scope.showDetailModal = function(modalId, gameId) {
-		$scope.gamesteps = Result.findGamesteps(gameId);
-		$(modalId).modal();
+		if (gameId != null) {
+			$scope.gamesteps = Result.findGamesteps(gameId);
+			$(modalId).modal();
+		}
 	}
 	$scope.results = Result.findAllGames();
 	gamestepper.register($scope, function(gamestep) {
