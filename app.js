@@ -55,13 +55,19 @@ app.post('/api/gamestep', function(req, res) {
 	// save current step into storage and add game to index if necessary
 	storageProvider.saveStep(gamestep);
 	notificationProvider.notifyLiveView(gamestep);
-	return res.send(gamestep);
+	res.send(gamestep);
 });
 
 app.get('/api/games', function(req, res){
   var games = storageProvider.getAllSortedGames();
   
   res.send(games);
+});
+
+app.get('api/games/:gameId', function(req, res) {
+	var gamesteps = storageProvider.getAllGamesteps(req.params.gameId);
+	
+	res.send(gamesteps);
 });
 
 server.listen(app.get('port'), function() {
