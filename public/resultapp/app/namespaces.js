@@ -1,6 +1,13 @@
 var ResultApp = angular.module('ResultApp', ['ngResource', 'common.services']);
 
 ResultApp
+	.directive('carousel', [function() {
+	  return function($scope, elm, attrs) {
+		  $(attrs.carousel).carousel({
+			  interval: 2000
+		  });
+	  };
+	}])
 	.directive('carouselPrev', [function() {
 	  return function($scope, elm, attrs) {
 		  elm.on("click", function () {
