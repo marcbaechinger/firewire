@@ -12,7 +12,9 @@ ResultApp.controller('ResultController', function($scope, $routeParams, Result, 
 	}
 	$scope.results = Result.findAllGames();
 	gamestepper.register($scope, function(gamestep) {
-		$scope.results = Result.findAllGames();
+		if(gamestep.type == "game-complete" || gamestep.type == "failure"){
+			$scope.results = Result.findAllGames();
+		}
 	});
 });
 
