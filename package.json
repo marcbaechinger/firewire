@@ -1,7 +1,7 @@
 {
   "name": "firewire",
   "subdomain": "firewire",
-  "version": "0.0.1",
+  "version": "0.0.1-1",
   "private": true,
   "scripts": {
     "start": "node app"
@@ -10,6 +10,9 @@
     "express": "3.0.0rc4",
     "jade": "*",
     "less-middleware": "*",
-    "socket.io" : "*"
+    "socket.io": "*"
+  },
+  "engines": {
+    "node": "0.8.x"
   }
 }
