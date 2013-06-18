@@ -35,6 +35,7 @@ var saveStep = function(step) {
 		if (exists) {
 			updateStepToFile(filePath, step);
 		} else {
+			steps = [];
 			writeStepToFile(filePath, step);
 		}
 
