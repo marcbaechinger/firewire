@@ -88,9 +88,17 @@ var getAllSortedGames = function() {
 
 	return gamesRanked;
 }
+var getAllGamesteps = function(gameId) {
+	var filePath = __path + "/games/steps_" + gameId + ".json";
+	var data = fs.readFileSync(filePath);
+	var gamesteps = JSON.parse(data);
+	return gamesteps;
+
+}
 
 module.exports = {
 	saveStep : saveStep,
 	readFileToIndex : readFileToIndex,
-	getAllSortedGames : getAllSortedGames
+	getAllSortedGames : getAllSortedGames,
+	getAllGamesteps : getAllGamesteps
 };
