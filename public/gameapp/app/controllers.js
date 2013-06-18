@@ -1,8 +1,5 @@
 'use strict';
 
-/* Controllers */
-
-
 function GameController($scope, backend, uuid, gamestepper) {
 	var that = this,
 		videoScaleFactor = 0.55,
@@ -80,14 +77,6 @@ function GameController($scope, backend, uuid, gamestepper) {
 		};
 		
 	logo.src = '/gameapp/img/logo.png';
-	
-	gamestepper.registerForCommand($scope, function(data) {
-		console.log("game app retrieved command", data);
-		if (data.type === "start") {
-			$scope.resetChallenge();
-			$scope.challengeStart();
-		}
-	});
 	
 	$scope.model = {
 		pictures: [],
@@ -265,6 +254,16 @@ function GameController($scope, backend, uuid, gamestepper) {
 		$scope.model.lastStep = "milestone-3";
 		milestone(3);
 	};
+	
+	gamestepper.registerForCommand($scope, function(data) {
+		if (data.type === "start") {
+			$scope.model.player = data.name;
+			$scope.resetChallenge();
+			$scope.challengeStart();
+		}
+	});
+	
+	$scope.startGame();
 };
 
 GameController.prototype.getUserMedia = function () {

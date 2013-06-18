@@ -6,7 +6,14 @@ angular.module('pushbutton.directives', []).
 		elm.bind("click", function (ev) {
 			ev.stopPropagation();
 			ev.preventDefault();
-			gamestepper.emit("gamecommand", {type: "start"})
+			if ($scope.model.player) {
+				gamestepper.emit("gamecommand", {type: "start", name: $scope.model.player});
+			} else {
+				angular.element(document.body).addClass("invalid");
+				$scope.$apply(function () {
+					$scope.model.inputPlaceholder = "Dude, type your name!";
+				});
+			}
 		});
 	  };
 	}]);

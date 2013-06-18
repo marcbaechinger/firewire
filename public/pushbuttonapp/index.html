@@ -2,13 +2,23 @@
 <html class="ng-scope" ng-app="pushbutton" ng-controller="ApplicationController">
 	<head>
 		<meta name="viewport" content="width=device-width">
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<title>FireStarter</title>
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap.css">
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
 		<link rel="stylesheet" href="stylesheets/style.css">
 	</head>
 	<body>
-		<button start-game>start game</button>
+		<div class="page" ng-show="model.gameState != 'started'">
+			<input type="text" placeholder="{{model.inputPlaceholder}}" id="player" ng-model="model.player">
+			<button class="btn btn-inverse" start-game>Start it, dude!</button>
+		</div>
+		<div class="page" ng-show="model.gameState == 'started'">
+			<div class="canvas">
+				<img src="{{model.step.image}}" class="left"/>
+				<img src="{{model.step.image}}" class="right"/>
+			</div>
+		</div>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="../common/javascripts/angular.js"></script>
 		<script src="../common/javascripts/qrcode.js"></script>
