@@ -3,7 +3,7 @@
 /* Controllers */
 
 
-function GameController($scope, backend, uuid) {
+function GameController($scope, backend, uuid, gamestepper) {
 	var that = this,
 		videoScaleFactor = 0.55,
 		video = document.querySelector("#video"),
@@ -80,6 +80,14 @@ function GameController($scope, backend, uuid) {
 		};
 		
 	logo.src = '/gameapp/img/logo.png';
+	
+	gamestepper.registerForCommand($scope, function(data) {
+		console.log("game app retrieved command", data);
+		if (data.type === "start") {
+			$scope.resetChallenge();
+			$scope.challengeStart();
+		}
+	});
 	
 	$scope.model = {
 		pictures: [],
@@ -263,4 +271,4 @@ GameController.prototype.getUserMedia = function () {
 	(navigator.getUserMedia || navigator.webkitGetUserMedia ||
 		navigator.mozGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
 };
-GameController.$inject = ["$scope", "backend", "uuid"];
+GameController.$inject = ["$scope", "backend", "uuid", "gamestepper"];

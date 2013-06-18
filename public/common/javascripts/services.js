@@ -33,6 +33,7 @@
 				clients.push(callback);
 			},
 			registerForCommand: function(scope, callback) {
+				console.log("register", callback);
 				callback._scope = scope;
 				commandClients.push(callback);
 			},
