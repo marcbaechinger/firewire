@@ -6,10 +6,7 @@
   "scripts": {
     "start": "node app.js"
   },
-  "dependencies": {
-    "express": "3.0.0rc4",
-    "jade": "*",
-    "less-middleware": "*",
-    "socket.io" : "*"
+  "engines": {
+	"node":"0.10.x"
   }
 }
