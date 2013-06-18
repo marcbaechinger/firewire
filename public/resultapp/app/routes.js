@@ -9,6 +9,12 @@ var resultAppConfig = function($routeProvider) {
 		templateUrl : 'partials/results/overview.html',
 		activeTab : 'results'
 	})
+	.when('/results/:gameId', {
+		controller : 'ResultController',
+		templateUrl : 'partials/results/overview.html',
+		activeTab : 'results',
+		
+	})
 }
 
 ResultApp.config(resultAppConfig);
