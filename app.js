@@ -44,7 +44,6 @@ io.sockets.on('connection', function(socket) {
 	socketListeners[socket.id] = socket;
 	console.log("Socket Listener added");
 	socket.on("gamecommand", function (data) {
-		console.log("gamecommand arrived on server", data);
 		notifyClients("gamecommand", data);
 	});
 });
