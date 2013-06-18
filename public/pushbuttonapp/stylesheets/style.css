@@ -1,0 +1,70 @@
+html,
+body,
+div,
+button,
+input,
+image {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
+body,
+.page {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.page {
+  background-image: url(../img/bg.jpg);
+  padding: 24px;
+}
+.page input[type=text] {
+  font-size: 56px;
+  line-height: 72px;
+  text-align: center;
+  height: 72px;
+  width: 100%;
+  margin-top: 4em;
+  margin-bottom: 1em;
+}
+.page button {
+  font-size: 42px;
+  line-height: 143px;
+  height: 412px;
+  width: 412px;
+  display: block;
+  border-radius: 50% 50% 50% 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 144px;
+}
+.page .canvas {
+  position: absolute;
+  margin-top: 50px;
+  width: 200%;
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  transition: transform 1s;
+}
+.page .canvas img {
+  display: block;
+  position: absolute;
+  width: 30%;
+}
+.page .canvas img.left {
+  left: 8%;
+}
+.page .canvas img.right {
+  right: 8%;
+}
+.page .canvas.right {
+  -moz-transform: translateX(-53%);
+  -webkit-transform: translateX(-53%);
+  transform: translateX(-53%);
+}
+.invalid input[type=text] {
+  background-color: #e0cc86;
+}
