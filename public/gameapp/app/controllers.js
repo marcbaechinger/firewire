@@ -76,7 +76,7 @@ function GameController($scope, backend, uuid) {
 				});
 			}
 			qrCodeGenerator.clear();
-			qrCodeGenerator.makeCode(document.location.host + "/game/" + $scope.model.gameId); 
+			qrCodeGenerator.makeCode(document.location.host + "/api/games/" + $scope.model.gameId); 
 		};
 		
 	logo.src = '/gameapp/img/logo.png';
