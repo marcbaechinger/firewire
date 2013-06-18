@@ -10,6 +10,7 @@ function GameController($scope, backend, uuid) {
 		audioCamera = document.querySelector("#audioCamera"),
 		lightBox = angular.element(document.querySelector(".pictures")),
 		milestonePanel = angular.element(document.querySelector("#panel-right")),
+		resultPanel = angular.element(document.getElementById("result-panel")),
 		frameGrabber,
 		bannerGradient,
 		clockInterval,
@@ -62,6 +63,20 @@ function GameController($scope, backend, uuid) {
 				msg: msg
 			});
 			$scope.takePicture(msg, "rgba(200, 0, 0, 1)");
+		},
+		qrCodeGenerator,
+		createQrCode = function () {
+			if (!qrCodeGenerator) {
+				qrCodeGenerator = new QRCode("qrcode", {
+				    width: 256,
+				    height: 256,
+				    colorDark : "#000000",
+				    colorLight : "#ffffff",
+				    correctLevel : QRCode.CorrectLevel.H
+				});
+			}
+			qrCodeGenerator.clear();
+			qrCodeGenerator.makeCode(document.location.host + "/game/" + $scope.model.gameId); 
 		};
 		
 	logo.src = '/gameapp/img/logo.png';
@@ -76,6 +91,7 @@ function GameController($scope, backend, uuid) {
 		gameStarted: false,
 		challengeStarted: false,
 		challengeCompleted: false,
+		failed: false,
 		milestone: 0,
 		time: 0
 	};
@@ -190,6 +206,7 @@ function GameController($scope, backend, uuid) {
 	$scope.challengeStart = function () {
 		console.log("challengeStart()");
 		if (!$scope.model.challengeStarted) {
+			resultPanel.removeClass("show");
 			$scope.model.challengeStarted = true;
 			$scope.model.lastStep = "game-start";
 			$scope.takePicture("Challenge started!", "orange");
@@ -208,8 +225,10 @@ function GameController($scope, backend, uuid) {
 		$scope.model.challengeCompleted = true;
 		$scope.model.lastStep = "game-complete";
 		$scope.takePicture("Challenge finished!", "orange");
+		resultPanel.addClass("show");
 		milestonePanel.addClass("completed");
 		clearClockInterval();
+		createQrCode();
 		lightBox.addClass("finished");
 		
 	};
@@ -220,7 +239,10 @@ function GameController($scope, backend, uuid) {
 		
 		milestonePanel.addClass("completed");
 		clearClockInterval();
+		createQrCode();
+		resultPanel.addClass("show");
 		lightBox.addClass("finished");
+		$scope.model.failed = true;
 	};
 	$scope.milestone1 = function () {
 		$scope.model.lastStep = "milestone-1";
