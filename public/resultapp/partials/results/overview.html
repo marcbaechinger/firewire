@@ -2,7 +2,7 @@
 	<div class="span12">
 		<ul class="thumbnails">
 			<li class="span3" ng-repeat="result in results">
-				<div class="thumbnail custom-cursor-pointer custom-background-palered" ng-class="{'custom-background-palegreen': result.type == 'game-complete'}" onclick="location.href='#results/{{result.id}}'">
+				<div class="thumbnail custom-cursor-pointer custom-background-palered" ng-class="{'custom-background-palegreen': result.type == 'game-complete'}" onclick="location.href='#!results/{{result.id}}'">
 					<img ng-src="{{result.image}}" class="img-rounded" alt="">
 					<h4>{{result.rank}}. {{result.player}}</h4>
 					<table class="table table-condensed custom-table">

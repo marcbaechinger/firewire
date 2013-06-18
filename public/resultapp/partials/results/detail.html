@@ -6,26 +6,26 @@
 
 <div class="row-fluid">
 	<div class="span6">
-		<div id="myCarousel" class="carousel slide">
+		<div id="gamestepCarousel" class="carousel slide">
 			<!-- Carousel indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide="next" ng-class="{active: gamesteps.indexOf(gamestep) == 0}" ng-repeat="gamestep in gamesteps"></li>
+				<li data-target="#gamestepCarousel" data-slide="next" ng-class="{active: gamesteps.indexOf(gamestep) == 0}" ng-repeat="gamestep in gamesteps"></li>
 			</ol>
 			<!-- Carousel items -->
 			<div class="carousel-inner">
 				<div ng-class="{active: gamesteps.indexOf(gamestep) == 0}" class="item" ng-repeat="gamestep in gamesteps">
 					<img ng-src="{{gamestep.image}}" class="img-rounded" style="width:100%;" alt="">
 					<div class="carousel-caption">
-						<h4>{{gamestep.player}}</h4>
+						<h4>{{gamestep.type|replaceGamestepType}}</h4>
 						<p>
-							{{gamestep.type}}
+							{{gamestep.timestamp | date:'dd.MM.yyyy'}} - {{gamestep.timestamp | date:'HH:mm:ss'}}
 						</p>
 					</div>
 				</div>
 			</div>
 			<!-- Carousel nav -->
-			<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-			<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			<a class="carousel-control left" href="#gamestepCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#gamestepCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 	</div>
 </div>

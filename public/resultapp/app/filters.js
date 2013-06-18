@@ -9,10 +9,26 @@ ResultApp.filter('second', function() {
 		var sec = seconds % 60;
 		return sec > 9 ? sec : "0" + sec;
 	}
-}); 
+});
 
 ResultApp.filter('replaceGamestepType', function() {
 	return function(value) {
-		return value.replace("AT", "@");
+		switch(value){
+			case "game-start":
+				return "When there was hope";
+				break;
+			case "game-complete":
+				return "When a hero was born";
+				break;
+			case "failure":
+				return "When all hope died";
+				break;
+			case "milestone-1":
+				return "Milestone 1 reached";
+				break;
+			case "milestone-2":
+				return "Milestone 2 reached";
+				break;
+		}
 	}
 });
