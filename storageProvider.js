@@ -71,7 +71,12 @@ var readFileToIndex = function() {
 	});
 }
 
+var getIndex = function(){
+	return index;
+}
+
 module.exports = {
 	saveStep : saveStep,
-	readFileToIndex : readFileToIndex
+	readFileToIndex : readFileToIndex,
+	getIndex : getIndex
 };

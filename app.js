@@ -58,6 +58,12 @@ app.post('/api/gamestep', function(req, res) {
 	return res.send(gamestep);
 });
 
+app.get('/api/games', function(req, res){
+  var games = storageProvider.getIndex();
+  
+  res.send(games);
+});
+
 server.listen(app.get('port'), function() {
 	console.log("Express server listening on port " + app.get('port'));
 });
