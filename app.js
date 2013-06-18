@@ -73,7 +73,8 @@ app.get('/api/games', function(req, res){
   res.send(games);
 });
 
-app.get('api/games/:gameId', function(req, res) {
+app.get('/api/games/:gameId', function(req, res) {
+	console.log('Get Game by id: ' + req.params.gameId);
 	var gamesteps = storageProvider.getAllGamesteps(req.params.gameId);
 	
 	res.send(gamesteps);

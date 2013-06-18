@@ -1,11 +1,11 @@
-ResultApp.factory('ResultService', function($resource) {
+ResultApp.factory('Result', function($resource) {
 	var Result = $resource('/api/games/:gameId', {}, {});
 
 	Result.findAllGames = function() {
 		return Result.query();
 	};
-	Result.findGameById = function(id) {
-		return Result.get({ gameId : id });
+	Result.findGamesteps = function(id) {
+		return Result.query({gameId:id});
 	};
 
 	return Result;
