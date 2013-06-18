@@ -152,6 +152,7 @@ article {
 }
 .pictures .image-container img {
   border-radius: 4px;
+  width: 350px;
 }
 .pictures .image-container:nth-child(3n + 3) {
   margin-right: 0;

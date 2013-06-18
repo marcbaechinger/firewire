@@ -2,7 +2,7 @@
 
 function GameController($scope, backend, uuid, gamestepper) {
 	var that = this,
-		videoScaleFactor = 0.55,
+		videoScaleFactor = 1,
 		video = document.querySelector("#video"),
 		audioCamera = document.querySelector("#audioCamera"),
 		lightBox = angular.element(document.querySelector(".pictures")),
@@ -170,33 +170,36 @@ function GameController($scope, backend, uuid, gamestepper) {
 				context.shadowOffsetY = 0;
 				context.shadowBlur = 0;
 				
+				// banner at bottom
 				context.fillStyle = bannerGradient;
-				context.fillRect(0, height - 28, width, 28);
+				context.fillRect(0, height - 56, width, 56);
 				
+				// main text in banner
 				context.fillStyle = fillStyle || "rgba(0,0,0,1)";
-				context.font = font || "14px Tahoma";
-				context.fillText(text, 12, height - 8);
+				context.font = font || "24px Tahoma";
+				context.fillText(text, 24, height - 18);
 				
+				// 
 				context.fillStyle = "rgba(0,0,0, 0.6)";
-				context.fillRect(12, 12, 32, 14);
-				context.fillRect(width - 38, 12, 14, 14);
-				context.fillRect(width - 22, 12, 14, 14);
+				context.fillRect(12, 12, 48, 24);
+				context.fillRect(width - 64, 12, 24, 24);
+				context.fillRect(width - 32, 12, 24, 24);
 								
 				context.fillStyle = "rgba(255,255,255,1)";
-				context.font = "10px Tahoma";
-				context.fillText(formatTime($scope.model.time), 18, 23);
+				context.font = "16px Tahoma";
+				context.fillText(formatTime($scope.model.time), 20, 30);
 								
 				context.fillStyle = "rgba(255,0,0,1)";
-				context.fillText($scope.model.errors.length, width - 38 + 4, 23);
+				context.fillText($scope.model.errors.length, width - 64 + 8, 30);
 				context.fillStyle = "green";
-				context.fillText($scope.model.milestone, width - 22 + 4, 23);
+				context.fillText($scope.model.milestone, width - 32 + 6, 30);
 				
 				context.shadowOffsetX = 2;
 				context.shadowOffsetY = 2;
 				context.shadowBlur = 8;
 				context.shadowColor = "rgba(0, 0, 0, 0.6)";
 				
-				context.drawImage(logo, width - 50, height - 46, 40, 39);
+				context.drawImage(logo, width - 70, height - 66, 60, 59);
 				audioCamera.play();
 			}
 		});

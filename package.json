@@ -1,5 +1,6 @@
 {
   "name": "application-name",
+  "subdomain": "firewire",
   "version": "0.0.1",
   "private": true,
   "scripts": {
