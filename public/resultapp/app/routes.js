@@ -16,6 +16,7 @@ var resultAppConfig = function($routeProvider, $locationProvider) {
 		activeTab : 'results',
 		
 	})
+	.otherwise({redirectTo: '/'});
 }
 
 ResultApp.config(resultAppConfig);
