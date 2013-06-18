@@ -10,7 +10,14 @@ var app = express();
 var server = http.createServer(app);
 var io = socketio.listen(server);
 
-var socketListeners = {};
+var socketListeners = {},
+	notifyClients = function (eventName, data) {
+		// iterate over all socket listeners and emit event
+		Object.keys(socketListeners).forEach(function(key) {
+//			console.log(socketListeners[key]);
+			socketListeners[key].emit(eventName, data);
+		});
+	};
 
 app.configure(function() {
 	app.set('port', process.env.PORT || 3000);
@@ -36,6 +43,10 @@ app.get('/', routes.index);
 io.sockets.on('connection', function(socket) {
 	socketListeners[socket.id] = socket;
 	console.log("Socket Listener added");
+	socket.on("gamecommand", function (data) {
+		console.log("gamecommand arrived on server", data);
+		notifyClients("gamecommand", data);
+	});
 });
 
 // initialize cache used for index
@@ -47,11 +58,9 @@ app.post('/api/gamestep', function(req, res) {
 
 	console.log("POST: ");
 
-	// iterate over all socket listeners and emit notification event
-	Object.keys(socketListeners).forEach(function(key) {
-		console.log(socketListeners[key]);
-		socketListeners[key].emit('gamestep', gamestep);
-	});
+	// notify websockets clients
+	notifyClients("gamestep", gamestep);
+	
 	// save current step into storage and add game to index if necessary
 	storageProvider.saveStep(gamestep);
 	notificationProvider.notifyLiveView(gamestep);
