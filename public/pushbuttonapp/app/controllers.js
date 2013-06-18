@@ -9,7 +9,5 @@ function ApplicationController($scope, gamestepper) {
 	gamestepper.registerForCommand($scope, function (data) {
 		console.log("gamecommand arrived", data);
 	});
-	
-	gamestepper.emit("gamecommand", {"yes": "no"});
 };
 ApplicationController.$inject = ["$scope", "gamestepper"];
