@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html class="ng-scope" ng-app="firewire" ng-controller="GameController">
+<html class="ng-scope" ng-app="ResultApp">
 	<head>
 		<meta name="viewport" content="width=device-width">
-		<title>FireWire Result App 2</title>
+		<title>FireWire ResultApp</title>
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap.css">
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
+		<div class="container">
+			<div class="page-header">
+				<div>
+					<h1>Firewire ResultApp <small>developed by some smart guys from ZUEHLKE...</small></h1>
+				</div>
+				<div class="navbar" ng-controller='NavigationController'>
+					<div class="navbar-inner">
+						<div class="container">
+							<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+							<a class="brand" href="#start">Start</a>
+							<div class="nav-collapse collapse navbar-responsive-collapse">
+								<ul class="nav">
+									<li ng-class="{active: $route.current.activeTab =='results'}">
+										<a href="#results">Resultate</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-view>
+				<!-- AngularJS views are added here at runtime. -->
+			</div>
+		</div>
 		<script src="/socket.io/socket.io.js"></script>
-	</head>
-	<body>
-		<script>
-			var socket = io.connect('http://localhost:3000');
-			socket.on('foo', function(data) {
-				console.log(data);
-			});
-		</script>
-	</body>
+		<script src="../common/javascripts/angular.js"></script>
+		<script src="../common/javascripts/angular-resource.js"></script>
+		<script src="app/namespaces.js"></script>
+		<script src="app/factories.js"></script>
+		<script src="app/controllers.js"></script>
+		<script src="app/routes.js"></script>
+		</body>
 </html>

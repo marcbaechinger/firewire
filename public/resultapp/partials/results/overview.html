@@ -1,0 +1,23 @@
+<div class="row-fluid">
+	<div class="span12">
+		<h2>Overview</h2>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<table class="table table-condensed table-striped table-hovered">
+			<tr>
+				<th>Rank</th>
+				<th>Duration</th>
+				<th>Time</th>
+				<th>Picture</th>
+			</tr>
+			<tr ng-repeat="result in results">
+				<td>{{result.id}}</td>
+				<td>{{result.duration}}</td>
+				<td>{{result.time}}</td>
+				<td>{{result.image}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
