@@ -45,9 +45,9 @@
 				<source src="audio/camera.ogg" type="audio/ogg"/>
 			</audio>
 		</article>
-		<section id="result-panel" class="overlay">
-			<h2 ng-show="scope.model.failed">You did it, dude! That's sooo great.<br/>Ask your business unit leader for a promotion!</h2>
-			<h2 ng-show="!scope.model.failed">You failed! No worries - try again.<br/>We don't say anything to anyone.</h2>
+		<section id="result-panel" class="overlay" ng-show="model.challengeCompleted">
+			<h2 ng-show="!model.failed">You did it, dude! That's sooo great.<br/>Ask your business unit leader for a promotion!</h2>
+			<h2 ng-show="model.failed">You failed! No worries - try again.<br/>We don't say anything to anyone.</h2>
 			<div id="qrcode"></div>
 			<p>Scann the QR-Code below to get the URL to your result page.</p>
 		</section>

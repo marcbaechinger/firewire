@@ -112,6 +112,7 @@ function GameController($scope, backend, uuid) {
 		$scope.model.milestones = [];
 		$scope.model.challengeStarted = false;
 		$scope.model.challengeCompleted = false;
+		$scope.model.failed = false;
 		$scope.model.milestone = 0;
 		$scope.model.time = 0;
 	};
@@ -234,6 +235,7 @@ function GameController($scope, backend, uuid) {
 	};
 	$scope.wireContact = function () {
 		$scope.model.challengeCompleted = true;
+		$scope.model.failed = true;
 		$scope.model.lastStep = "failure";
 		addError($scope, "Outsch... failure!");
 		
@@ -242,7 +244,6 @@ function GameController($scope, backend, uuid) {
 		createQrCode();
 		resultPanel.addClass("show");
 		lightBox.addClass("finished");
-		$scope.model.failed = true;
 	};
 	$scope.milestone1 = function () {
 		$scope.model.lastStep = "milestone-1";
