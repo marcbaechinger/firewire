@@ -22,8 +22,18 @@
 	background-color:#9cbba3 !important;
 }
 
-.custom-background-palered {
+.custom-thumbnail {
 	background-color:#d5aaaa;
+}
+
+.custom-thumbnail:hover {
+	background-color:#0088cc !important;
+	color:#FFF;
+}
+
+.custom-label {
+	font-size: 17.5px;
+	margin: 10px 0;
 }
 
 /*

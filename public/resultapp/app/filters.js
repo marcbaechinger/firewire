@@ -15,20 +15,34 @@ ResultApp.filter('replaceGamestepType', function() {
 	return function(value) {
 		switch(value){
 			case "game-start":
-				return "When there was hope";
+				return "After having started";
 				break;
 			case "game-complete":
-				return "When a hero was born";
+				return "After a successful finish";
 				break;
 			case "failure":
-				return "When all hope died";
+				return "After failure";
 				break;
 			case "milestone-1":
-				return "Milestone 1 reached";
+				return "After reaching milestone 1";
 				break;
 			case "milestone-2":
-				return "Milestone 2 reached";
+				return "After reaching milestone 2";
 				break;
+			case "milestone-3":
+				return "After reaching milestone 3";
+				break;
+		}
+	}
+});
+
+ResultApp.filter('typeDependingMessage', function() {
+	return function(value){
+		switch(value){
+			case "game-complete":
+				return "succeed";
+			default:
+				return "fail";
 		}
 	}
 });
