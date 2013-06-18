@@ -11,13 +11,15 @@
 				<th>Duration</th>
 				<th>Date</th>
 				<th>Time</th>
+				<th>Type</th>
 				<th>Picture</th>
 			</tr>
 			<tr ng-repeat="result in results">
-				<td>{{result.id}}</td>
+				<td>{{result.rank}}</td>
 				<td>{{result.duration | minute}}:{{result.duration | second}}</td>
 				<td>{{result.timestamp | date:'dd.MM.yyyy'}}</td>
 				<td>{{result.timestamp | date:'HH:mm:ss'}}</td>
+				<td>{{result.type}}</td>
 				<td><img ng-src="{{result.image}}" /></td>
 			</tr>
 		</table>

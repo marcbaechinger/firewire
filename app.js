@@ -59,7 +59,7 @@ app.post('/api/gamestep', function(req, res) {
 });
 
 app.get('/api/games', function(req, res){
-  var games = storageProvider.getIndex();
+  var games = storageProvider.getAllSortedGames();
   
   res.send(games);
 });

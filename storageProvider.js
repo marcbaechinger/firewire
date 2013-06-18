@@ -70,13 +70,27 @@ var readFileToIndex = function() {
 		}
 	});
 }
+var getAllSortedGames = function() {
+	var gamesSorted = index;
+	gamesSorted.sort(function(gameA, gameB) {
+		var typeCompare = gameB.type.localeCompare(gameA.type);
+		if (typeCompare != 0) {
+			return typeCompare;
+		} else {
+			return gameB.duration < gameA.duration;
+		}
+	});
 
-var getIndex = function(){
-	return index;
+	gamesRanked = gamesSorted.map(function(game, index) {
+		game.rank = index + 1;
+		return game;
+	});
+
+	return gamesRanked;
 }
 
 module.exports = {
 	saveStep : saveStep,
 	readFileToIndex : readFileToIndex,
-	getIndex : getIndex
+	getAllSortedGames : getAllSortedGames
 };
