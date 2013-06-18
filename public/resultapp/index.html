@@ -7,13 +7,29 @@
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
 		<link rel="stylesheet" href="stylesheets/styles.css">
 		<div class="container-fluid">
-			<div class="page-header">
-				<div>
+			<div class="page-header" style="width: 100%;float:left;">
+				<div style="float:left;">
 					<a href="#!results"><h1>Firewire</h1></a>
+				</div>
+				<div class="custom-margin-top10" style="float:right;">
+					<a href="#impressumModal" data-toggle="modal">Impressum</a>
 				</div>
 			</div>
 			<div ng-view>
 				<!-- AngularJS views are added here at runtime. -->
+			</div>
+		</div>
+		<div id="impressumModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					×
+				</button>
+				<h3 id="myModalLabel">Impressum</h3>
+			</div>
+			<div class="modal-body">
+				<p>
+					This app was developed for Zühlke Engineering Days 2013 in Frankfurt, Germany.
+				</p>
 			</div>
 		</div>
 		<script src="/socket.io/socket.io.js"></script>

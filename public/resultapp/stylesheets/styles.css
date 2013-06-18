@@ -28,6 +28,7 @@
 
 .custom-thumbnail:hover {
 	background-color:#0088cc !important;
+	transition: 1.0s background-color, 1.0s color;
 	color:#FFF;
 }
 
