@@ -1,1 +1,1 @@
-var ResultApp = angular.module('ResultApp', ['ngResource']);
+var ResultApp = angular.module('ResultApp', ['ngResource', 'common.services']);
