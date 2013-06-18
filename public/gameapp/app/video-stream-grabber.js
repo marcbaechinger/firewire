@@ -38,7 +38,7 @@
 				width: that.frameWidth * that.scale,
 				height: that.frameHeight * that.scale,
 				/*data: that.context.getImageData(0, 0, that.frameWidth * that.scale, that.frameHeight * that.scale),*/
-				base64: that.canvas.toDataURL()
+				base64: that.canvas.toDataURL('image/jpeg', 0.5)
 			});
 		}, 1000 / that.frameRate);
 	};
