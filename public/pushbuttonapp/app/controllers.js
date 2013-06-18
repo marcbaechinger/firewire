@@ -1,5 +1,9 @@
 'use strict';
 
-function ApplicationController($scope) {
+function ApplicationController($scope, gamestepper) {
+	
+	gamestepper.register($scope, function (data) {
+		console.log("retrieved data in controller", data);
+	});
 };
-ApplicationController.$inject = ["$scope"];
+ApplicationController.$inject = ["$scope", "gamestepper"];
