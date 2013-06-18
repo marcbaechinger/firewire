@@ -2,18 +2,16 @@ ResultApp.controller('NavigationController', function($scope, $route) {
 	$scope.$route = $route;
 });
 
-ResultApp.controller('ResultController', function($scope, $routeParams, Result, gamestepper) {
-	$scope.params = $routeParams;
-	$scope.showDetailModal = function(modalId, gameId) {
-		if (gameId != null) {
-			$scope.gamesteps = Result.findGamesteps(gameId);
-			$(modalId).modal();
-		}
-	}
+ResultApp.controller('ResultController', function($scope, Result, gamestepper) {
 	$scope.results = Result.findAllGames();
 	gamestepper.register($scope, function(gamestep) {
-		$scope.results = Result.findAllGames();
+		if(gamestep.type == "game-complete" || gamestep.type == "failure"){
+			$scope.results = Result.findAllGames();
+		}
 	});
 });
 
-// COMMITS
+ResultApp.controller('ResultDetailController', function($scope, $routeParams, Result) {
+	$scope.params = $routeParams;
+	$scope.gamesteps = Result.findGamesteps($routeParams.gameId);
+});
