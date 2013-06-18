@@ -73,7 +73,7 @@ function GameController($scope, backend, uuid, gamestepper) {
 				});
 			}
 			qrCodeGenerator.clear();
-			qrCodeGenerator.makeCode(document.location.host + "/api/games/" + $scope.model.gameId); 
+			qrCodeGenerator.makeCode(document.location.host + "/resultapp/index.html#/results/" + $scope.model.gameId); 
 		};
 		
 	logo.src = '/gameapp/img/logo.png';
