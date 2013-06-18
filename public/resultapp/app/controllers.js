@@ -14,4 +14,4 @@ ResultApp.controller('ResultController', function($scope, $routeParams, Result, 
 	});
 });
 
-// COMMITS
+// COMMIT
