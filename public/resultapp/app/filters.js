@@ -10,3 +10,9 @@ ResultApp.filter('second', function() {
 		return sec > 9 ? sec : "0" + sec;
 	}
 }); 
+
+ResultApp.filter('replaceGamestepType', function() {
+	return function(value) {
+		return value.replace("AT", "@");
+	}
+});
