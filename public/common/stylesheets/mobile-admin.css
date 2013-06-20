@@ -41,10 +41,11 @@ h2 {
   position: relative;
   margin-bottom: 4px;
   border-bottom: 1px solid #999;
-  height: 1.9em;
+  min-height: 1.9em;
 }
 .item-list li .pic {
   display: none;
+  margin-top: 6px;
 }
 .item-list li label {
   display: inline;

@@ -7,14 +7,14 @@ block append content
 		- each client in clients
 			li
 				label= client.id
-				button.btn.btn-mini.btn-inverse Disconnect
+				button.btn.btn-mini.btn-inverse(data-action="disconnect", data-client="#{client.id}") Disconnect
 
 	h2 Number of games played: 
 		span #{games.length}
 	ul.item-list
 		- each game in games
-			li
-				label= game.player
+			li(data-action="toggle-pic")
+				label(data-action="togglePic")= game.player
 				span.rank.label.label-warning= game.rank
 				button.btn.btn-mini.btn-inverse Delete
 				div.pic

@@ -16,6 +16,12 @@ var socketListeners = {},
 		Object.keys(socketListeners).forEach(function(key) {
 			socketListeners[key].emit(eventName, data);
 		});
+	},
+	disconnectClient = function (clientId) {
+		if (socketListeners[clientId]) {
+			socketListeners[clientId].disconnect();
+			delete socketListeners[clientId];
+		}
 	};
 
 app.configure(function() {
@@ -71,6 +77,12 @@ app.get('/api/games', function(req, res){
   var games = storageProvider.getAllSortedGames();
   
   res.send(games);
+});
+
+app.delete('/api/disconnect/:clientId', function(req, res){
+	console.log("disconnectClient", req.params.clientId);
+	disconnectClient(req.params.clientId);
+ 	res.send({});
 });
 
 app.get('/api/games/:gameId', function(req, res) {
