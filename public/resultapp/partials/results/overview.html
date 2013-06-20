@@ -12,7 +12,7 @@
 					</div>
 					<div style="clear:both;">
 						<p>
-							Needed <strong>{{result.duration | minute}}:{{result.duration | second}}</strong> minutes to <strong>{{result.type|typeDependingMessage}}</strong> in playing the game on <strong>{{result.timestamp | date:'dd.MM.yyyy'}}</strong> at <strong>{{result.timestamp | date:'HH:mm:ss'}}</strong>
+							<strong>{{result.type|typeDependingMessage}}</strong> in a time of <strong>{{result.duration | minute}}:{{result.duration | second}}</strong> on <strong>{{result.timestamp | date:'dd.MM.yyyy'}}</strong> at <strong>{{result.timestamp | date:'HH:mm:ss'}}</strong>
 						</p>
 					</div>
 				</div>
