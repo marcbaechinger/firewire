@@ -1,6 +1,6 @@
 ResultApp.controller('ResultController', function($scope, Result, gamestepper) {
 	$scope.results = Result.findAllGames();
-	gamestepper.registerNewGameAvailable($scope, function(gamestep) {
+	gamestepper.registerNewGameAvailable($scope, function(game) {
 		$scope.results = Result.findAllGames();
 		$scope.lastCompletedGame = game;
 	});
