@@ -18,7 +18,7 @@
 					<div class="carousel-caption">
 						<h4>{{gamestep.type|replaceGamestepType}}</h4>
 						<p>
-							{{gamestep.timestamp | date:'dd.MM.yyyy'}} - {{gamestep.timestamp | date:'HH:mm:ss'}}
+							{{gamestep.timestamp | date:'dd.MM.yyyy'}} at {{gamestep.timestamp | date:'HH:mm:ss'}}
 						</p>
 					</div>
 				</div>
@@ -27,5 +27,10 @@
 			<a class="carousel-control left" carousel-prev="#gamestepCarousel" style="cursor:pointer;">&lsaquo;</a>
 			<a class="carousel-control right" carousel-next="#gamestepCarousel" style="cursor:pointer;">&rsaquo;</a>
 		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span6 ">
+		<a href="#results" title="Back to Overview">< Back to Overview</a>
 	</div>
 </div>
