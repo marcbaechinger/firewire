@@ -42,7 +42,7 @@ ResultApp.filter('typeDependingMessage', function() {
 			case "game-complete":
 				return "succeed";
 			default:
-				return "fail";
+				return "failed";
 		}
 	}
 });
