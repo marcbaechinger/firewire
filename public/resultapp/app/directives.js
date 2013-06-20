@@ -11,7 +11,11 @@ ResultApp.directive('carouselPrev', [
 function() {
 	return function($scope, elm, attrs) {
 		elm.on("click", function() {
-			$(attrs.carouselPrev).carousel("prev");
+			if ($('.carousel-inner .active').index() == 0) {
+				event.preventDefault();
+			} else {
+				$(attrs.carouselPrev).carousel("prev");
+			}
 		});
 	};
 }]);
@@ -20,7 +24,11 @@ ResultApp.directive('carouselNext', [
 function() {
 	return function($scope, elm, attrs) {
 		elm.on("click", function() {
-			$(attrs.carouselNext).carousel("next");
+			if ($('.carousel-inner .active').index() == $scope.gamesteps.length - 1) {
+				event.preventDefault();
+			} else {
+				$(attrs.carouselNext).carousel("next");
+			}
 		});
 	};
 }]);
@@ -31,7 +39,6 @@ function() {
 		$scope.$watch('lastCompletedGame', function(newValue, oldValue) {
 			if (newValue) {
 				if ($scope.liveScrollingOn) {
-
 					setTimeout(function() {
 						$(elm).modal();
 						setTimeout(function() {
