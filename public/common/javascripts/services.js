@@ -3,7 +3,7 @@
 
 		module.factory("gamestepper", [
 		function() {
-			var websocketUrl = "http://" + document.location.host, socket = io.connect(websocketUrl), clients = [], commandClients = [], rankAvailableClients = [];
+			var websocketUrl = "http://" + document.location.host, socket = io.connect(websocketUrl), clients = [], commandClients = [], newGameAvailableClients = [];
 
 			console.log("connected to ", websocketUrl);
 
@@ -16,7 +16,7 @@
 			});
 
 			socket.on("newgameavailable", function(data) {
-				rankAvailableClients.forEach(function(callback) {
+				newGameAvailableClients.forEach(function(callback) {
 					callback._scope.$apply(function() {
 						callback(data);
 					});
@@ -43,7 +43,7 @@
 				},
 				registerNewGameAvailable : function(scope, callback) {
 					callback._scope = scope;
-					rankAvailableClients.push(callback);
+					newGameAvailableClients.push(callback);
 				},
 				emit : function(name, data) {
 					socket.emit(name, data);
