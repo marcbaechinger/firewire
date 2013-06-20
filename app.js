@@ -50,6 +50,9 @@ io.sockets.on('connection', function(socket) {
 	socket.on("gamecommand", function (data) {
 		notifyClients("gamecommand", data);
 	});
+	socket.on('disconnect', function () {
+		delete socketListeners[socket.id];
+	});
 });
 
 // initialize cache used for index
