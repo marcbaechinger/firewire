@@ -97,16 +97,6 @@ var getAllGamesteps = function(gameId) {
 
 }
 
-Array.prototype.searchByParameter = function(obj) {
-    return this.filter(function(item) {
-        for (var prop in obj)
-            if (!(prop in item) || obj[prop] !== item[prop])
-                 return false;
-        return true;
-    });
-};
-
-
 var getSortedGameById = function(gameId){
 	var games = getAllSortedGames();
 	var game = games.filter(function (item) {
