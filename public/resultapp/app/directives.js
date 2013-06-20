@@ -42,3 +42,15 @@ function() {
 		});
 	}
 }]);
+
+ResultApp.directive('fwScroll', [
+function() {
+	return function($scope, elm, attrs) {
+		$scope.$watch('lastCompletedGame', function(newValue, oldValue) {
+			if (newValue && newValue.id == attrs.fwScroll) {
+				console.log($(elm).offset().left, $(elm).offset().top);
+				window.scrollTo($(elm).offset().left, $(elm).offset().top);
+			}
+		});
+	}
+}]);

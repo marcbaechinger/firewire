@@ -16,6 +16,12 @@ var socketListeners = {},
 		Object.keys(socketListeners).forEach(function(key) {
 			socketListeners[key].emit(eventName, data);
 		});
+	},
+	disconnectClient = function (clientId) {
+		if (socketListeners[clientId]) {
+			socketListeners[clientId].disconnect();
+			delete socketListeners[clientId];
+		}
 	};
 
 app.configure(function() {
@@ -44,6 +50,9 @@ io.sockets.on('connection', function(socket) {
 	socket.on("gamecommand", function (data) {
 		notifyClients("gamecommand", data);
 	});
+	socket.on('disconnect', function () {
+		delete socketListeners[socket.id];
+	});
 });
 
 // initialize cache used for index
@@ -71,6 +80,16 @@ app.get('/api/games', function(req, res){
   var games = storageProvider.getAllSortedGames();
   
   res.send(games);
+});
+
+app.delete('/api/disconnect/:clientId', function(req, res){
+	disconnectClient(req.params.clientId);
+ 	res.send({});
+});
+app.delete('/api/games/:gameId', function(req, res){
+	storageProvider.deleteGame(req.params.gameId, function () {
+	 	res.send({});
+	});
 });
 
 app.get('/api/games/:gameId', function(req, res) {

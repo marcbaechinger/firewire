@@ -16,6 +16,6 @@ block append content
 			li
 				label= game.player
 				span.rank.label.label-warning= game.rank
-				button.btn.btn-mini.btn-inverse Delete
+				button.btn.btn-mini.btn-inverse(data-action="deleteGame", data-game="#{game.id}") Delete
 				div.pic
 					img(src="#{game.image}")

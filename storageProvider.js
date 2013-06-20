@@ -9,6 +9,18 @@ var steps = new Array();
 // array containing a summary of final steps
 var index = new Array();
 
+var getGameFilePath = function(gameId) {
+	return __path + "/games/steps_" + gameId + ".json";
+};
+
+var saveIndexFile = function () {
+	fs.writeFile(__indexPath, JSON.stringify(index, null, 4), function(err) {
+		if (err) {
+			console.log(err);
+		}
+	});
+};
+
 // read existing file and append current step
 var updateStepToFile = function(filePath, step) {
 	fs.readFile(filePath, function(err, data) {
@@ -30,7 +42,7 @@ var writeStepToFile = function(filePath, step) {
 	});
 }
 var saveStep = function(step) {
-	var filePath = __path + "/games/steps_" + step.id + ".json";
+	var filePath = getGameFilePath(step.id);
 	fs.exists(filePath, function(exists) {
 		if (exists) {
 			updateStepToFile(filePath, step);
@@ -50,13 +62,29 @@ var saveStep = function(step) {
 			break;
 	}
 }
-var writeFinalStepToIndex = function(step) {
-	index.push(step);
-	fs.writeFile(__indexPath, JSON.stringify(index, null, 4), function(err) {
-		if (err) {
-			console.log(err);
+var deleteGame = function (gameId, callback) {
+	var filePath = getGameFilePath(gameId);
+	fs.exists(filePath, function(exists) {
+		if (exists) {
+			fs.unlink(filePath, function (err) {
+				if (err) {
+					callback(err);
+				} else {
+					index.forEach(function (game, idx) {
+						if (game.id === gameId) {
+							index.splice(idx, 1);
+						}
+					});
+					saveIndexFile();
+					callback();
+				}
+			});
 		}
 	});
+};
+var writeFinalStepToIndex = function(step) {
+	index.push(step);
+	saveIndexFile();
 }
 var readFileToIndex = function() {
 	fs.exists(__indexPath, function(exists) {
@@ -108,6 +136,7 @@ var getSortedGameById = function(gameId){
 
 module.exports = {
 	saveStep : saveStep,
+	deleteGame: deleteGame,
 	readFileToIndex : readFileToIndex,
 	getAllSortedGames : getAllSortedGames,
 	getAllGamesteps : getAllGamesteps,
