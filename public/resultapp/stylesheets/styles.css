@@ -66,6 +66,13 @@
 	right: 245px;
 }
 
+/*
+ * Bugfixes for Twitter Bootstrap
+ */
+ul.thumbnails li.span3:nth-child(4n + 5) {
+  margin-left : 0px;
+}
+
 .animate {
 	-webkit-animation-duration: 1s;
 	-webkit-animation-name: slidein;
@@ -73,11 +80,11 @@
 	animation-name: slidein;
 }
 
-@-webkit-keyframes
+@-webkit-keyframes	
 slidein {
 from {
 	margin-top: 100%;
-	width: 100%
+	width: 100%;
 }
 
 to {
@@ -86,14 +93,15 @@ to {
 }
 }
 
-@keyframes
-slidein {from {
-	margin-bottom: 100%;
-	width: 100%
+@keyframes	
+slidein {
+from {
+	margin-top: 100%;
+	width: 100%;
 }
 
 to {
-	margin-bottom: 0%;
+	margin-top: 0%;
 	width: 100%;
 }
 }
