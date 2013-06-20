@@ -10,6 +10,9 @@
 .custom-margin-right5 {
 	margin-right: 5px;
 }
+.custom-margin-right20 {
+	margin-right: 20px;
+}
 .custom-padding-right5 {
 	padding-right: 5px;
 }
@@ -101,4 +104,8 @@ transform: scale(1.2);
 	animation-duration: 0.5s;
 	animation-name: blinker;
 	animation-iteration-count: 4;
+}
+
+.navbar-search label {
+	margin-top: 5px;
 }

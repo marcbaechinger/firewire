@@ -1,0 +1,21 @@
+extends layout
+
+block append content
+	h2 Connected clients
+		span #{clients.length}
+	ul.item-list
+		- each client in clients
+			li
+				label= client.id
+				button.btn.btn-mini.btn-inverse Disconnect
+
+	h2 Number of games played: 
+		span #{games.length}
+	ul.item-list
+		- each game in games
+			li
+				label= game.player
+				span.rank.label.label-warning= game.rank
+				button.btn.btn-mini.btn-inverse Delete
+				div.pic
+					img(src="#{game.image}")

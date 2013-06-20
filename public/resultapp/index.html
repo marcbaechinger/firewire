@@ -7,11 +7,20 @@
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap.css">
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
 		<link rel="stylesheet" href="stylesheets/styles.css">
+	</head>
+	<body ng-controller="MainController">
 		<div class="container-fluid">
 			<div class="navbar">
 				<div class="navbar-inner">
 					<a href="#!results" class="brand">Firewire</a>
 					<ul class="nav pull-right">
+						<li>
+							<form class="navbar-search">
+								<label class="checkbox search-query">
+									<input type="checkbox" class="search-query" ng-model="liveScrollingOn" />
+									Popup on new Result</label>
+							</form>
+						</li>
 						<li>
 							<form class="navbar-search">
 								<input type="text" class="search-query" ng-model="searchString.player"/>
@@ -52,5 +61,5 @@
 		<script src="app/routes.js"></script>
 		<script src="app/filters.js"></script>
 		<script src="app/directives.js"></script>
-		</body>
+	</body>
 </html>
