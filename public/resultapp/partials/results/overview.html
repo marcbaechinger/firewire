@@ -14,8 +14,8 @@
 			<li>
 				<form class="navbar-search">
 					<span class="clearable">
-						<input class="data_field search-query" type="text" name="data_field" type="search" class="search-query" ng-model="searchString.player"/>
-						<span class="icon_clear">x</span> </span>
+						<input class="data_field search-query" type="text" name="data_field" type="search" class="search-query" ng-model="searchString.player" placeholder="Search Player..."/>
+						<span class="icon_clear" ng-click="searchString=''">x</span> </span>
 				</form>
 			</li>
 			<li>
@@ -27,7 +27,7 @@
 <div class="row-fluid" >
 	<div class="span12">
 		<ul class="thumbnails">
-			<li class="span3" ng-repeat="result in results | filter:searchString">
+			<li class="span3" ng-repeat="result in results | filter:searchString"  ng-animate="{enter: 'example-repeat-enter', leave: 'example-repeat-leave', move: 'example-repeat-move'}">
 				<div ng-class="{'animate' : result.id == lastCompletedGame.id}" fw-scroll="{{result.id}}">
 					<div class="thumbnail custom-cursor-pointer custom-thumbnail" ng-class="{'custom-background-palegreen': result.type == 'game-complete'}" onclick="location.href='#results/{{result.id}}'">
 						<img ng-src="{{result.image}}" class="img-rounded" alt="">
