@@ -37,7 +37,7 @@ function() {
 						setTimeout(function() {
 							$(elm).modal('hide');
 						}, 5000);
-					}, 1000);
+					}, 2000);
 				}
 			}
 		});
