@@ -13,7 +13,7 @@ ResultApp.filter('second', function() {
 
 ResultApp.filter('replaceGamestepType', function() {
 	return function(value) {
-		switch(value){
+		switch(value) {
 			case "game-start":
 				return "After having started";
 				break;
@@ -37,8 +37,8 @@ ResultApp.filter('replaceGamestepType', function() {
 });
 
 ResultApp.filter('typeDependingMessage', function() {
-	return function(value){
-		switch(value){
+	return function(value) {
+		switch(value) {
 			case "game-complete":
 				return "succeed";
 			default:
