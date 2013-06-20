@@ -1,5 +1,4 @@
 var storageProvider = require('./storageProvider.js');
-var notificationProvider = require('./notificationProvider.js');
 /**
  * Module dependencies.
  */
@@ -62,7 +61,6 @@ app.post('/api/gamestep', function(req, res) {
 	
 	// save current step into storage and add game to index if necessary
 	storageProvider.saveStep(gamestep);
-	notificationProvider.notifyLiveView(gamestep);
 	res.send(gamestep);
 });
 
