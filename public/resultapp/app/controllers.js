@@ -5,6 +5,10 @@ ResultApp.controller('ResultController', function($scope, Result, gamestepper) {
 			$scope.results = Result.findAllGames();
 		}
 	});
+	
+	gamestepper.registerGameRankAvailable($scope, function(game) {
+		$scope.lastCompletedGame = game;
+	});
 });
 
 ResultApp.controller('ResultDetailController', function($scope, $routeParams, Result) {

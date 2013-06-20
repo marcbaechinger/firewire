@@ -8,13 +8,12 @@ var express = require('express'), routes = require('./routes'), user = require('
 
 var app = express();
 var server = http.createServer(app);
-var io = socketio.listen(server);
+var io = socketio.listen(server, {log:false});
 
 var socketListeners = {},
 	notifyClients = function (eventName, data) {
 		// iterate over all socket listeners and emit event
 		Object.keys(socketListeners).forEach(function(key) {
-//			console.log(socketListeners[key]);
 			socketListeners[key].emit(eventName, data);
 		});
 	};
@@ -42,7 +41,6 @@ app.get('/', routes.index);
 
 io.sockets.on('connection', function(socket) {
 	socketListeners[socket.id] = socket;
-	console.log("Socket Listener added");
 	socket.on("gamecommand", function (data) {
 		notifyClients("gamecommand", data);
 	});
@@ -55,14 +53,18 @@ storageProvider.readFileToIndex();
 app.post('/api/gamestep', function(req, res) {
 	var gamestep = req.body;
 
-	console.log("POST: ");
-
 	// notify websockets clients
 	notifyClients("gamestep", gamestep);
 	
 	// save current step into storage and add game to index if necessary
 	storageProvider.saveStep(gamestep);
 	notificationProvider.notifyLiveView(gamestep);
+
+	if(gamestep.type == "game-complete" || gamestep.type == "failure"){
+		var gamestepRanked = storageProvider.getSortedGameById(gamestep.id);
+		notifyClients("gamerankavailable", gamestepRanked);
+	}
+
 	res.send(gamestep);
 });
 
@@ -73,7 +75,6 @@ app.get('/api/games', function(req, res){
 });
 
 app.get('/api/games/:gameId', function(req, res) {
-	console.log('Get Game by id: ' + req.params.gameId);
 	var gamesteps = storageProvider.getAllGamesteps(req.params.gameId);
 	
 	res.send(gamesteps);
