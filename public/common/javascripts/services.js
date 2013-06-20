@@ -15,7 +15,7 @@
 				});
 			});
 
-			socket.on("gamerankavailable", function(data) {
+			socket.on("newgameavailable", function(data) {
 				rankAvailableClients.forEach(function(callback) {
 					callback._scope.$apply(function() {
 						callback(data);
@@ -41,7 +41,7 @@
 					callback._scope = scope;
 					commandClients.push(callback);
 				},
-				registerGameRankAvailable : function(scope, callback) {
+				registerNewGameAvailable : function(scope, callback) {
 					callback._scope = scope;
 					rankAvailableClients.push(callback);
 				},

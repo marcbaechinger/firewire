@@ -60,7 +60,7 @@ app.post('/api/gamestep', function(req, res) {
 
 	if(gamestep.type == "game-complete" || gamestep.type == "failure"){
 		var gamestepRanked = storageProvider.getSortedGameById(gamestep.id);
-		notifyClients("gamerankavailable", gamestepRanked);
+		notifyClients("newgameavailable", gamestepRanked);
 	}
 
 	res.send(gamestep);
