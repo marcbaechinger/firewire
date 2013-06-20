@@ -3,15 +3,16 @@ var storageProvider = require('./storageProvider.js');
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), socketio = require('socket.io');
+var express = require('express'), routes = require('./routes'), admin = require('./routes/admin'), http = require('http'), path = require('path'), socketio = require('socket.io');
 
 var app = express();
 var server = http.createServer(app);
-var io = socketio.listen(server, {log:false});
+var io = socketio.listen(server, {
+	log:true
+});
 
 var socketListeners = {},
 	notifyClients = function (eventName, data) {
-		// iterate over all socket listeners and emit event
 		Object.keys(socketListeners).forEach(function(key) {
 			socketListeners[key].emit(eventName, data);
 		});
@@ -76,6 +77,14 @@ app.get('/api/games/:gameId', function(req, res) {
 	var gamesteps = storageProvider.getAllGamesteps(req.params.gameId);
 	
 	res.send(gamesteps);
+});
+
+app.get('/admin', function(req, res){
+  res.render('admin', { 
+	  title: 'Admin-Client',
+	  clients: socketListeners,
+	  games: storageProvider.getAllSortedGames()
+  });
 });
 
 server.listen(app.get('port'), function() {

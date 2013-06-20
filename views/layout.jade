@@ -2,24 +2,15 @@ doctype 5
 html(ng-app="myApp")
 	head
 		title= title
-		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-		link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(href='http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic', rel='stylesheet', type='text/css')
+		link(rel='stylesheet', href='/common/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='/common/stylesheets/bootstrap-responsive.css')
+		link(rel='stylesheet', href='/common/stylesheets/mobile-admin.css')
 	body
 		.navbar.navbar-inverse.navbar-fixed-top
 			.navbar-inner
-				a.brand(href="#") FireWire
-				ul.nav
-					li.active
-						a(href="#") Play
-					li
-						a(href="#") Admin
+				a.brand(href="#") FireWire Admin
 		article.container-fluid
 			block content
-
-		script(src="/javascripts/angular.js")
-		script(src="/app/app.js")
-		script(src="/app/services.js")
-		script(src="/app/controllers.js")
-		script(src="/app/filters.js")
-		script(src="/app/directives.js")
+		script(src="/common/javascripts/jquery.js")
+		script(src="/admin-client/application-controller.js")
