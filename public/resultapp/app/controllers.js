@@ -1,3 +1,7 @@
+ResultApp.controller('MainController', function($scope) {
+	$scope.liveScrollingOn = true;
+});
+
 ResultApp.controller('ResultController', function($scope, Result, gamestepper) {
 	$scope.results = Result.findAllGames();
 	gamestepper.registerNewGameAvailable($scope, function(game) {
