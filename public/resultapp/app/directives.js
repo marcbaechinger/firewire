@@ -30,12 +30,12 @@ function() {
 	return function($scope, elm, attrs) {
 		$scope.$watch('lastCompletedGame', function(newValue, oldValue) {
 			if (newValue) {
-				$(".animate").one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+				setTimeout(function() {
 					$(elm).modal();
 					setTimeout(function() {
 						$(elm).modal('hide');
 					}, 5000);
-				});
+				}, 1000);
 			}
 		});
 	}
