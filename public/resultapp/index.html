@@ -10,28 +10,6 @@
 	</head>
 	<body ng-controller="MainController">
 		<div class="container-fluid">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<a href="#!results" class="brand">Firewire</a>
-					<ul class="nav pull-right">
-						<li>
-							<form class="navbar-search">
-								<label class="checkbox search-query">
-									<input type="checkbox" class="search-query" ng-model="liveScrollingOn" />
-									Popup on new Result</label>
-							</form>
-						</li>
-						<li>
-							<form class="navbar-search">
-								<input type="text" class="search-query" ng-model="searchString.player"/>
-							</form>
-						</li>
-						<li>
-							<a href="#impressumModal"  data-toggle="modal">Impressum</a>
-						</li>
-					</ul>
-				</div>
-			</div>
 			<div ng-view>
 				<!-- AngularJS views are added here at runtime. -->
 			</div>
