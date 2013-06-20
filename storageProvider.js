@@ -72,17 +72,6 @@ var readFileToIndex = function() {
 	});
 }
 var getAllSortedGames = function() {
-	// flag most recent game
-	var tmpIndex = index;
-	tmpIndex.map(function(game) {
-		game.mostRecent = false;
-	});
-	tmpIndex.sort(function(gameA, gameB) {
-		return gameA.timestamp > gameB.timestamp;
-	});
-	if (tmpIndex.length > 0) {
-		tmpIndex[tmpIndex.length - 1].mostRecent = true;
-	}
 	var gamesSorted = index;
 	gamesSorted.sort(function(gameA, gameB) {
 		var typeCompare = gameB.type.localeCompare(gameA.type);
