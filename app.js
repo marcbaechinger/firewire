@@ -83,9 +83,13 @@ app.get('/api/games', function(req, res){
 });
 
 app.delete('/api/disconnect/:clientId', function(req, res){
-	console.log("disconnectClient", req.params.clientId);
 	disconnectClient(req.params.clientId);
  	res.send({});
+});
+app.delete('/api/games/:gameId', function(req, res){
+	storageProvider.deleteGame(req.params.gameId, function () {
+	 	res.send({});
+	});
 });
 
 app.get('/api/games/:gameId', function(req, res) {

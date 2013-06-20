@@ -31,6 +31,18 @@ new ApplicationController({
 				}
 			});
 		},
+		deleteGame: function (target) {
+			$.ajax({
+				type: "DELETE",
+				url: "/api/games/" + $(target).data("game"),
+				success: function (res) {
+					target.closest("li").remove();
+				},
+				error: function (res) {
+					alert("deleting game failed");
+				}
+			});
+		},
 		togglePic: function (target) {
 			target.parent().find(".pic").toggle();
 		}
