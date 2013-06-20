@@ -30,12 +30,14 @@ function() {
 	return function($scope, elm, attrs) {
 		$scope.$watch('lastCompletedGame', function(newValue, oldValue) {
 			if (newValue) {
-				setTimeout(function() {
-					$(elm).modal();
+				if ($scope.liveScrollingOn) {
 					setTimeout(function() {
-						$(elm).modal('hide');
-					}, 5000);
-				}, 2000);
+						$(elm).modal();
+						setTimeout(function() {
+							$(elm).modal('hide');
+						}, 5000);
+					}, 2000);
+				}
 			}
 		});
 	}

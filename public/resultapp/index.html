@@ -7,13 +7,21 @@
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap.css">
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
 		<link rel="stylesheet" href="stylesheets/styles.css">
+	</head>
+	<body ng-controller="MainController">
 		<div class="container-fluid">
 			<div class="page-header" style="width: 100%;float:left;">
 				<div style="float:left;">
 					<a href="#!results"><h1>Firewire</h1></a>
 				</div>
 				<div class="custom-margin-top10" style="float:right;">
-					<a href="#impressumModal" data-toggle="modal">Impressum</a>
+					<div class="custom-margin-right20" style="float:left;">
+						Popup on new result
+						<input type="checkbox" ng-model="liveScrollingOn">
+					</div>
+					<div style="float:left;">
+						<a href="#impressumModal" data-toggle="modal">Impressum</a>
+					</div>
 				</div>
 			</div>
 			<div ng-view>
@@ -45,5 +53,5 @@
 		<script src="app/routes.js"></script>
 		<script src="app/filters.js"></script>
 		<script src="app/directives.js"></script>
-		</body>
+	</body>
 </html>
