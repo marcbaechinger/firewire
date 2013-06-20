@@ -105,7 +105,3 @@ transform: scale(1.2);
 	animation-name: blinker;
 	animation-iteration-count: 4;
 }
-
-.navbar-search label {
-	margin-top: 5px;
-}

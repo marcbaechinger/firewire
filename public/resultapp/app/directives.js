@@ -31,7 +31,6 @@ function() {
 		$scope.$watch('lastCompletedGame', function(newValue, oldValue) {
 			if (newValue) {
 				if ($scope.liveScrollingOn) {
-
 					setTimeout(function() {
 						$(elm).modal();
 						setTimeout(function() {
