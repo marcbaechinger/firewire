@@ -1,5 +1,4 @@
-var resultAppConfig = function($routeProvider, $locationProvider) {
-	$locationProvider.hashPrefix('!');
+var resultAppConfig = function($routeProvider) {
 	$routeProvider.when('/', {
 		controller : 'ResultController',
 		templateUrl : 'partials/results/overview.html',
