@@ -2,16 +2,16 @@
  * Custom Twitter Bootstrap style extensions
  */
 .custom-margin-top10 {
-	margin-top:10px;
+	margin-top: 10px;
 }
 .custom-margin-top20 {
-	margin-top:20px;
+	margin-top: 20px;
 }
 .custom-margin-right5 {
-	margin-right:5px;
+	margin-right: 5px;
 }
 .custom-padding-right5 {
-	padding-right:5px;
+	padding-right: 5px;
 }
 
 .custom-cursor-pointer {
@@ -19,18 +19,18 @@
 }
 
 .custom-background-palegreen {
-	background-color:#9cbba3 !important;
+	background-color: #9cbba3 !important;
 }
 
 .custom-thumbnail {
-	background-color:#d5aaaa;
-	margin-left:0px !important;
+	background-color: #d5aaaa;
+	margin-left: 0px !important;
 }
 
 .custom-thumbnail:hover {
-	background-color:#0088cc !important;
+	background-color: #0088cc !important;
 	transition: 1.0s background-color, 1.0s color;
-	color:#FFF;
+	color: #FFF;
 }
 
 .custom-label {
@@ -41,20 +41,20 @@
 /*
  * Custom Twitter Bootstrap styles adjustments for mobile devices
  */
-@media(max-width:479px) {
+@media (max-width: 479px) {
 	h1 {
-		font-size:23px;
+		font-size: 23px;
 	}
 	h2 {
-		font-size:15px;
+		font-size: 15px;
 	}
 }
-@media(min-width:480px)and(max-width:767px) {
+@media (min-width: 480px) and (max-width: 767px) {
 	h1 {
-		font-size:24px;
+		font-size: 24px;
 	}
 	h2 {
-		font-size:18px;
+		font-size: 18px;
 	}
 }
 
@@ -62,7 +62,7 @@
  * Bugfixes for Twitter Bootstrap
  */
 ul.thumbnails li.span3:nth-child(4n + 5) {
-  margin-left : 0px;
+	margin-left: 0px;
 }
 
 /*
@@ -70,12 +70,44 @@ ul.thumbnails li.span3:nth-child(4n + 5) {
  */
 
 body {
-	font-size:13px;
+	font-size: 13px;
 }
 
 .custom-table {
-	margin-bottom:0px;
+	margin-bottom: 0px;
 }
 .carousel-indicators {
-	right:245px;
+	right: 245px;
+}
+
+.animate {
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: slidein;
+	animation-duration: 1s;
+	animation-name: slidein;
+}
+
+@-webkit-keyframes
+slidein {
+from {
+	margin-top: 100%;
+	width: 100%;
+}
+
+to {
+	margin-top: 0%;
+	width: 100%;
+}
+}
+
+@keyframes
+slidein {from {
+	margin-top: 100%;
+	width: 100%;
+}
+
+to {
+	margin-top: 0%;
+	width: 100%;
+}
 }
