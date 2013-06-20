@@ -1,22 +1,23 @@
 <div class="row-fluid" >
 	<div class="span12">
 		<ul class="thumbnails">
-			<div ng-class="{'animate' : result.mostRecent == true}">
-				<div class="thumbnail custom-cursor-pointer custom-thumbnail" ng-class="{'custom-background-palegreen': result.type == 'game-complete'}" onclick="location.href='#results/{{result.id}}'">
-					<img ng-src="{{result.image}}" class="img-rounded" alt="">
-					<div style="float:left;">
-						<h4 class="text-right">{{result.player}}</h4>
-					</div>
-					<div style="float:right;">
-						<span class="label label-inverse custom-label"># {{result.rank}}</span>
-					</div>
-					<div style="clear:both;">
-						<p>
-							<strong>{{result.type|typeDependingMessage}}</strong> in a time of <strong>{{result.duration | minute}}:{{result.duration | second}}</strong> on <strong>{{result.timestamp | date:'dd.MM.yyyy'}}</strong> at <strong>{{result.timestamp | date:'HH:mm:ss'}}</strong>
-						</p>
+			<li class="span3" ng-repeat="result in results">
+				<div ng-class="{'animate' : result.mostRecent == true}">
+					<div class="thumbnail custom-cursor-pointer custom-thumbnail" ng-class="{'custom-background-palegreen': result.type == 'game-complete'}" onclick="location.href='#!results/{{result.id}}'">
+						<img ng-src="{{result.image}}" class="img-rounded" alt="">
+						<div style="float:left;">
+							<h4 class="text-right">{{result.player}}</h4>
+						</div>
+						<div style="float:right;">
+							<span class="label label-inverse custom-label"># {{result.rank}}</span>
+						</div>
+						<div style="clear:both;">
+							<p>
+								Needed <strong>{{result.duration | minute}}:{{result.duration | second}}</strong> minutes to <strong>{{result.type|typeDependingMessage}}</strong> in playing the game on <strong>{{result.timestamp | date:'dd.MM.yyyy'}}</strong> at <strong>{{result.timestamp | date:'HH:mm:ss'}}</strong>
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
 			</li>
 		</ul>
 	</div>

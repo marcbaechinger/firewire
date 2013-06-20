@@ -23,12 +23,7 @@
 }
 
 .custom-thumbnail {
-<<<<<<< HEAD
 	background-color: #d5aaaa;
-=======
-	background-color:#d5aaaa;
-	margin-left:0px !important;
->>>>>>> branch 'master' of https://github.com/marcbaechinger/firewire.git
 }
 
 .custom-thumbnail:hover {
@@ -61,22 +56,9 @@
 		font-size: 18px;
 	}
 }
-
-/*
- * Bugfixes for Twitter Bootstrap
- */
-ul.thumbnails li.span3:nth-child(4n + 5) {
-  margin-left : 0px;
-}
-
 /*
  * Custom styles
  */
-
-body {
-	font-size:13px;
-}
-
 .custom-table {
 	margin-bottom: 0px;
 }
