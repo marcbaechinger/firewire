@@ -25,13 +25,13 @@ function() {
 function() {
 	return function($scope, elm, attrs) {
 		$scope.$watch('lastCompletedGame', function(newValue, oldValue) {
-			if(newValue) {
-				
-				$(elm).modal();
-				
-				setTimeout(function(){
-					$(elm).modal('hide');
-				}, 5000);
+			if (newValue) {
+				$(".animate").one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+					$(elm).modal();
+					setTimeout(function() {
+						$(elm).modal('hide');
+					}, 5000);
+				});
 			}
 		});
 	}
