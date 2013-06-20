@@ -8,12 +8,19 @@
 		<link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
 		<link rel="stylesheet" href="stylesheets/styles.css">
 		<div class="container-fluid">
-			<div class="page-header" style="width: 100%;float:left;">
-				<div style="float:left;">
-					<a href="#!results"><h1>Firewire</h1></a>
-				</div>
-				<div class="custom-margin-top10" style="float:right;">
-					<a href="#impressumModal" data-toggle="modal">Impressum</a>
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a href="#!results" class="brand">Firewire</a>
+					<ul class="nav pull-right">
+						<li>
+							<form class="navbar-search">
+								<input type="text" class="search-query" ng-model="searchString.player"/>
+							</form>
+						</li>
+						<li>
+							<a href="#impressumModal"  data-toggle="modal">Impressum</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div ng-view>
