@@ -13,7 +13,7 @@ var getGameFilePath = function(gameId) {
 	return __path + "/games/steps_" + gameId + ".json";
 };
 
-var saveIndexFile = function () {
+var saveIndexFile = function() {
 	fs.writeFile(__indexPath, JSON.stringify(index, null, 4), function(err) {
 		if (err) {
 			console.log(err);
@@ -41,7 +41,7 @@ var writeStepToFile = function(filePath, step) {
 		}
 	});
 }
-var saveStep = function(step) {
+var saveStep = function(step, completedCallback) {
 	var filePath = getGameFilePath(step.id);
 	fs.exists(filePath, function(exists) {
 		if (exists) {
@@ -56,21 +56,21 @@ var saveStep = function(step) {
 	switch (step.type) {
 		case "game-complete":
 		case "failure":
-			writeFinalStepToIndex(step);
+			writeFinalStepToIndex(step, completedCallback);
 			break;
 		default:
 			break;
 	}
 }
-var deleteGame = function (gameId, callback) {
+var deleteGame = function(gameId, callback) {
 	var filePath = getGameFilePath(gameId);
 	fs.exists(filePath, function(exists) {
 		if (exists) {
-			fs.unlink(filePath, function (err) {
+			fs.unlink(filePath, function(err) {
 				if (err) {
 					callback(err);
 				} else {
-					index.forEach(function (game, idx) {
+					index.forEach(function(game, idx) {
 						if (game.id === gameId) {
 							index.splice(idx, 1);
 						}
@@ -82,9 +82,12 @@ var deleteGame = function (gameId, callback) {
 		}
 	});
 };
-var writeFinalStepToIndex = function(step) {
+var writeFinalStepToIndex = function(step, completedCallback) {
 	index.push(step);
 	saveIndexFile();
+	getSortedGameById(step.id, function(game) {
+		completedCallback(game);
+	});
 }
 var readFileToIndex = function() {
 	fs.exists(__indexPath, function(exists) {
@@ -99,7 +102,7 @@ var readFileToIndex = function() {
 		}
 	});
 }
-var getAllSortedGames = function() {
+var getAllSortedGames = function(callback) {
 	var gamesSorted = index;
 	gamesSorted.sort(function(gameA, gameB) {
 		var typeCompare = gameB.type.localeCompare(gameA.type);
@@ -115,30 +118,27 @@ var getAllSortedGames = function() {
 		return game;
 	});
 
-	return gamesRanked;
+	callback(gamesRanked);
 }
-var getAllGamesteps = function(gameId) {
+var getAllGamesteps = function(gameId, callback) {
 	var filePath = __path + "/games/steps_" + gameId + ".json";
 	var data = fs.readFileSync(filePath);
 	var gamesteps = JSON.parse(data);
-	return gamesteps;
-
+	callback(gamesteps);
 }
-
-var getSortedGameById = function(gameId){
-	var games = getAllSortedGames();
-	var game = games.filter(function (item) {
-   	 	return item.id === gameId;
-	})[0];
-	
-	return game;
+var getSortedGameById = function(gameId, callback) {
+	getAllSortedGames(function(games) {
+		var game = games.filter(function (item) {
+		return item.id === gameId;
+		})[0];
+		callback(game);
+	});
 }
 
 module.exports = {
 	saveStep : saveStep,
-	deleteGame: deleteGame,
+	deleteGame : deleteGame,
 	readFileToIndex : readFileToIndex,
 	getAllSortedGames : getAllSortedGames,
 	getAllGamesteps : getAllGamesteps,
-	getSortedGameById : getSortedGameById
 };

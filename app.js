@@ -1,4 +1,4 @@
-var storageProvider = require('./storageProvider.js');
+var storageProvider = require('./storageProviderRedis.js');
 /**
  * Module dependencies.
  */
@@ -8,21 +8,19 @@ var express = require('express'), routes = require('./routes'), admin = require(
 var app = express();
 var server = http.createServer(app);
 var io = socketio.listen(server, {
-	log:true
+	log : false
 });
 
-var socketListeners = {},
-	notifyClients = function (eventName, data) {
-		Object.keys(socketListeners).forEach(function(key) {
-			socketListeners[key].emit(eventName, data);
-		});
-	},
-	disconnectClient = function (clientId) {
-		if (socketListeners[clientId]) {
-			socketListeners[clientId].disconnect();
-			delete socketListeners[clientId];
-		}
-	};
+var socketListeners = {}, notifyClients = function(eventName, data) {
+	Object.keys(socketListeners).forEach(function(key) {
+		socketListeners[key].emit(eventName, data);
+	});
+}, disconnectClient = function(clientId) {
+	if (socketListeners[clientId]) {
+		socketListeners[clientId].disconnect();
+		delete socketListeners[clientId];
+	}
+};
 
 app.configure(function() {
 	app.set('port', process.env.PORT || 3000);
@@ -47,15 +45,15 @@ app.get('/', routes.index);
 
 io.sockets.on('connection', function(socket) {
 	socketListeners[socket.id] = socket;
-	socket.on("gamecommand", function (data) {
+	socket.on("gamecommand", function(data) {
 		notifyClients("gamecommand", data);
 	});
-	socket.on('disconnect', function () {
+	socket.on('disconnect', function() {
 		delete socketListeners[socket.id];
 	});
 });
 
-// initialize cache used for index
+// initialize cache used for indexstorageProvider.readFileToIndex();
 storageProvider.readFileToIndex();
 
 // REST service to persist game steps into file using a POST request
@@ -64,46 +62,50 @@ app.post('/api/gamestep', function(req, res) {
 
 	// notify websockets clients
 	notifyClients("gamestep", gamestep);
-	
-	// save current step into storage and add game to index if necessary
-	storageProvider.saveStep(gamestep);
 
-	if(gamestep.type == "game-complete" || gamestep.type == "failure"){
-		var gamestepRanked = storageProvider.getSortedGameById(gamestep.id);
+	// save current step into storage and add game to index if necessary
+	storageProvider.saveStep(gamestep, function(gamestepRanked) {
 		notifyClients("newgameavailable", gamestepRanked);
-	}
+	});
 
 	res.send(gamestep);
 });
 
-app.get('/api/games', function(req, res){
-  var games = storageProvider.getAllSortedGames();
-  
-  res.send(games);
+app.get('/api/games', function(req, res) {
+	storageProvider.getAllSortedGames(function(games) {
+		res.send(games);
+	});
 });
 
-app.delete('/api/disconnect/:clientId', function(req, res){
+app.
+delete ('/api/disconnect/:clientId',
+function(req, res) {
 	disconnectClient(req.params.clientId);
- 	res.send({});
+	res.send({});
 });
-app.delete('/api/games/:gameId', function(req, res){
-	storageProvider.deleteGame(req.params.gameId, function () {
-	 	res.send({});
+app.
+delete ('/api/games/:gameId',
+function(req, res) {
+	storageProvider.deleteGame(req.params.gameId, function() {
+		res.send({});
 	});
 });
 
 app.get('/api/games/:gameId', function(req, res) {
-	var gamesteps = storageProvider.getAllGamesteps(req.params.gameId);
-	
-	res.send(gamesteps);
+	console.log('Get Game by id: ' + req.params.gameId);
+	storageProvider.getAllGamesteps(req.params.gameId, function(gamesteps) {
+		res.send(gamesteps);
+	});
 });
 
-app.get('/admin', function(req, res){
-  res.render('admin', { 
-	  title: 'Admin-Client',
-	  clients: socketListeners,
-	  games: storageProvider.getAllSortedGames()
-  });
+app.get('/admin', function(req, res) {
+	storageProvider.getAllSortedGames(function(games) {
+		res.render('admin', {
+			title : 'Admin-Client',
+			clients : socketListeners,
+			games : games
+		});
+	});
 });
 
 server.listen(app.get('port'), function() {
