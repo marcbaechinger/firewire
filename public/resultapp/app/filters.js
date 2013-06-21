@@ -40,9 +40,9 @@ ResultApp.filter('typeDependingMessage', function() {
 	return function(value){
 		switch(value){
 			case "game-complete":
-				return "succeed";
+				return "Success!";
 			default:
-				return "failed";
+				return "Failed! ";
 		}
 	}
 });
