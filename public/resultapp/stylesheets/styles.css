@@ -137,33 +137,24 @@ span.icon_clear:hover {
 	color: #f52;
 }
 
-.example-repeat-enter-setup,
-.example-repeat-leave-setup,
-.example-repeat-move-setup {
-  -webkit-transition:all linear 0.5s;
-  -moz-transition:all linear 0.5s;
-  -ms-transition:all linear 0.5s;
-  -o-transition:all linear 0.5s;
-  transition:all linear 0.5s;
+.animate-enter, 
+.animate-leave
+{ 
+    -webkit-transition: 200ms linear all;
+    -moz-transition: 200ms linear all;
+    -ms-transition: 200ms linear all;
+    -o-transition: 200ms linear all;
+    transition: 200ms linear all;
+} 
+ 
+.animate-enter.animate-enter-active, 
+.animate-leave {
+    opacity: 1;
+    bottom: 0;
 }
  
-.example-repeat-enter-setup {
-  line-height:0;
-  opacity:0;
+.animate-leave.animate-leave-active,
+.animate-enter {
+    opacity: 0;
+    bottom: -50px;
 }
-.example-repeat-enter-setup.example-repeat-enter-start {
-  line-height:20px;
-  opacity:1;
-}
- 
-.example-repeat-leave-setup {
-  opacity:1;
-  line-height:20px;
-}
-.example-repeat-leave-setup.example-repeat-leave-start {
-  opacity:0;
-  line-height:0;
-}
- 
-.example-repeat-move-setup { }
-.example-repeat-move-setup.example-repeat-move-start { }
