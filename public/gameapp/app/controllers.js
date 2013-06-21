@@ -5,6 +5,12 @@ function GameController($scope, backend, uuid, gamestepper) {
 		videoScaleFactor = 1,
 		video = document.querySelector("#video"),
 		audioCamera = document.querySelector("#audioCamera"),
+		audioStart = document.querySelector("#audioStart"),
+		audioSuccess = document.querySelector("#audioSuccess"),
+		audioFailed = document.querySelector("#audioFailed"),
+		audioMilestone1 = document.querySelector("#audioMilestone1"),
+		audioMilestone2 = document.querySelector("#audioMilestone2"),
+		audioMilestone3 = document.querySelector("#audioMilestone3"),
 		lightBox = angular.element(document.querySelector(".pictures")),
 		milestonePanel = angular.element(document.querySelector("#panel-right")),
 		resultPanel = angular.element(document.getElementById("result-panel")),
@@ -220,6 +226,9 @@ function GameController($scope, backend, uuid, gamestepper) {
 				}, 1000); 
 			}
 			$scope.model.gameId = uuid();
+			setTimeout(function() {
+				audioStart.play();
+			}, 1000);
 		}
 	};
 	$scope.challengeEnd = function () {
@@ -231,6 +240,9 @@ function GameController($scope, backend, uuid, gamestepper) {
 		clearClockInterval();
 		createQrCode();
 		lightBox.addClass("finished");
+		setTimeout(function() {
+			audioSuccess.play();
+		}, 1000);
 		
 	};
 	$scope.wireContact = function () {
@@ -244,18 +256,30 @@ function GameController($scope, backend, uuid, gamestepper) {
 		createQrCode();
 		resultPanel.addClass("show");
 		lightBox.addClass("finished");
+		setTimeout(function() {
+			audioFailed.play();
+		}, 1000);
 	};
 	$scope.milestone1 = function () {
 		$scope.model.lastStep = "milestone-1";
 		milestone(1);
+		setTimeout(function() {
+			audioMilestone1.play();
+		}, 1000);
 	};
 	$scope.milestone2 = function () {
 		$scope.model.lastStep = "milestone-2";
 		milestone(2);
+		setTimeout(function() {
+			audioMilestone2.play();
+		}, 1000);
 	};
 	$scope.milestone3 = function () {
 		$scope.model.lastStep = "milestone-3";
 		milestone(3);
+		setTimeout(function() {
+			audioMilestone3.play();
+		}, 1000);
 	};
 	
 	gamestepper.registerForCommand($scope, function(data) {
