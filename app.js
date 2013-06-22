@@ -1,4 +1,4 @@
-var storageProvider = require('./storageProviderRedis.js');
+var storageProvider = require('./storageProvider.js');
 /**
  * Module dependencies.
  */
