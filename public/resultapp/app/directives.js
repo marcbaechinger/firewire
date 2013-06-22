@@ -43,7 +43,7 @@ function() {
 						$(elm).modal();
 						setTimeout(function() {
 							$(elm).modal('hide');
-						}, 5000);
+						}, 10000);
 					}, 2000);
 				}
 			}
