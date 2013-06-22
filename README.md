@@ -15,9 +15,9 @@ install decent node js version: <i>https://github.com/joyent/node/wiki/Installat
 
 The Frontend of the application is split up in 4 single page applications:
 
-The main game screen taking webcam pictures: http://localhost:3000/gameapp/index.html 
-The second screen game app to start a game in the main screen (iPad optimized): http://localhost:3000/pushbuttonapp/index.html
-An auxiliary screen displaying the ranking of the played games: http://localhost:3000/resultapp/index.html 
+* The <b>main game screen</b> taking webcam pictures: <a href="http://localhost:3000/gameapp/index.html">http://localhost:3000/gameapp/index.html</a> 
+* The <b>start button app</b> to start a game in the main screen (iPad optimized): <a href="http://localhost:3000/pushbuttonapp/index.html">http://localhost:3000/pushbuttonapp/index.html</a>
+* An auxiliary screen displaying the <b>ranking</b> of the played games: <a href="http://localhost:3000/pushbuttonapp/index.html">http://localhost:3000/resultapp/index.html</a>
 
 
 
