@@ -158,3 +158,35 @@ span.icon_clear:hover {
     opacity: 0;
     bottom: -50px;
 }
+
+.thumbnail img {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+@media (max-width: 767px) {
+	body {
+		padding: 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.custom-margin-top10 {
+		margin-top: 0;
+	}
+	.thumbnail {
+		border-radius: 0;
+	}
+	.thumbnails .img-rounded {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.carousel-inner > .item > img {
+		border-radius: 0;
+	}
+	
+	.navbar-inner {
+		border-radius: 0;
+	}
+}
