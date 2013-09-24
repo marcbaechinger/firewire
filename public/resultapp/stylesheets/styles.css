@@ -2,7 +2,24 @@ body {
 /*	background-image: url(../../pushbuttonapp/img/bg.jpg);*/
 	background-color: whitesmoke;
 }
+.credits {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;	
+  padding: 8px;
+  text-align: center;
+  margin-top: 10px;
+  color: #999;
+}
 .logo {
+	border: 1px solid beige;
+	-webkit-transform: rotate(-1deg);
+	-moz-transform: rotate(-1deg);
+	-ms-transform: rotate(-1deg);
+	-o-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+	box-shadow: 2px 2px 16px #000;
+	margin-top: 8px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
