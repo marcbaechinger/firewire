@@ -164,6 +164,12 @@ span.icon_clear:hover {
 	border-bottom-left-radius: 0;
 }
 
+.dialog-image {
+	display: block;
+}
+.modal-body {
+	max-height: 600px;
+}
 @media (max-width: 767px) {
 	body {
 		padding: 0;

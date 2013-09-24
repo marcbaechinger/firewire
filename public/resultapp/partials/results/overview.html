@@ -61,7 +61,7 @@
 		<p>
 			<strong>{{lastCompletedGame.player}} just {{lastCompletedGame.type|typeDependingMessage}}</strong> in a time of <strong>{{lastCompletedGame.duration | minute}}:{{lastCompletedGame.duration | second}}</strong> on <strong>{{lastCompletedGame.timestamp | date:'dd.MM.yyyy'}}</strong> at <strong>{{lastCompletedGame.timestamp | date:'HH:mm:ss'}}</strong> which means <strong>rank {{lastCompletedGame.rank}}</strong>.
 		</p>
-		<a href="#results/{{lastCompletedGame.id}}" title="Check {{lastCompletedGame.player}}'s latest results">> Check {{lastCompletedGame.player}}'s latest result & photos</a>
+		<img src="{{lastCompletedGame.image}}" class="dialog-image"/>
 	</div>
 </div>
 <script type="text/javascript">
