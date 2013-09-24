@@ -1,3 +1,12 @@
+body {
+/*	background-image: url(../../pushbuttonapp/img/bg.jpg);*/
+	background-color: whitesmoke;
+}
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 /*
  * Custom Twitter Bootstrap style extensions
  */
@@ -28,6 +37,7 @@
 .custom-thumbnail {
 	background-color: #d5aaaa;
 	margin-left: 0px !important;
+	padding: 8px;
 }
 
 .custom-thumbnail:hover {
