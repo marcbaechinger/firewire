@@ -11,6 +11,22 @@ body {
   margin-top: 10px;
   color: #999;
 }
+.firewire {
+	position: absolute;
+	z-index: 1000;
+	left: 150px;
+	top: 210px;
+	font-size: 32px;
+	font-weight: 700;
+	-webkit-text-shadow: 1px 1px 13px red;
+	text-shadow: 1px 1px 3px #fff;
+	-webkit-transform: rotate(3deg);
+	-moz-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg) ;
+	-o-transform: rotate(-3deg) ;
+	transform: rotate(-3deg) ;
+}
 .logo {
 	border: 1px solid beige;
 	-webkit-transform: rotate(-3deg) translateX(-10px);
