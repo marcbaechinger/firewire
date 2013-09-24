@@ -2,6 +2,7 @@
 
 function GameController($scope, backend, uuid, gamestepper) {
 	var that = this,
+	    audioDelay = 300,
 		videoScaleFactor = 1,
 		video = document.querySelector("#video"),
 		audioCamera = document.querySelector("#audioCamera"),
@@ -228,7 +229,7 @@ function GameController($scope, backend, uuid, gamestepper) {
 			$scope.model.gameId = uuid();
 			setTimeout(function() {
 				audioStart.play();
-			}, 1000);
+			}, audioDelay);
 		}
 	};
 	$scope.challengeEnd = function () {
@@ -242,7 +243,7 @@ function GameController($scope, backend, uuid, gamestepper) {
 		lightBox.addClass("finished");
 		setTimeout(function() {
 			audioSuccess.play();
-		}, 1000);
+		}, audioDelay);
 		
 	};
 	$scope.wireContact = function () {
@@ -258,28 +259,28 @@ function GameController($scope, backend, uuid, gamestepper) {
 		lightBox.addClass("finished");
 		setTimeout(function() {
 			audioFailed.play();
-		}, 1000);
+		}, audioDelay);
 	};
 	$scope.milestone1 = function () {
 		$scope.model.lastStep = "milestone-1";
 		milestone(1);
 		setTimeout(function() {
 			audioMilestone1.play();
-		}, 1000);
+		}, audioDelay);
 	};
 	$scope.milestone2 = function () {
 		$scope.model.lastStep = "milestone-2";
 		milestone(2);
 		setTimeout(function() {
 			audioMilestone2.play();
-		}, 1000);
+		}, audioDelay);
 	};
 	$scope.milestone3 = function () {
 		$scope.model.lastStep = "milestone-3";
 		milestone(3);
 		setTimeout(function() {
 			audioMilestone3.play();
-		}, 1000);
+		}, audioDelay);
 	};
 	
 	gamestepper.registerForCommand($scope, function(data) {
