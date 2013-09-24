@@ -158,7 +158,6 @@ span.icon_clear:hover {
     opacity: 0;
     bottom: -50px;
 }
-
 .thumbnail img {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
@@ -194,5 +193,14 @@ span.icon_clear:hover {
 	
 	.navbar-inner {
 		border-radius: 0;
+	}
+
+}
+
+@media (min-width: 767px) {
+	#gamestepCarousel {
+		position: absolute;
+		left: 50%;
+		margin-left: -300px;
 	}
 }
