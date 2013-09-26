@@ -15,6 +15,7 @@ block append content
 		- each game in games
 			li
 				label= game.player
+				label #{game.type} in #{game.duration} seconds
 				span.rank.label.label-warning= game.rank
 				button.btn.btn-mini.btn-inverse(data-action="deleteGame", data-game="#{game.id}") Delete
 				div.pic
