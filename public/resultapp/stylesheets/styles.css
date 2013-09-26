@@ -1,3 +1,48 @@
+body {
+/*	background-image: url(../../pushbuttonapp/img/bg.jpg);*/
+	background-color: whitesmoke;
+}
+.credits {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;	
+  padding: 8px;
+  text-align: center;
+  margin-top: 10px;
+  color: #999;
+}
+.firewire {
+	position: absolute;
+	z-index: 1000;
+	left: 150px;
+	top: 210px;
+	font-size: 32px;
+	font-weight: 700;
+	-webkit-text-shadow: 1px 1px 13px #fff;
+	-moz-text-shadow: 1px 1px 13px #fff;
+	-ms-text-shadow: 1px 1px 13px #fff;
+	-0-text-shadow: 1px 1px 13px #fff;
+	text-shadow: 1px 1px 3px #fff;
+	-webkit-transform: rotate(3deg);
+	-moz-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg) ;
+	-o-transform: rotate(-3deg) ;
+	transform: rotate(-3deg) ;
+}
+.logo {
+	border: 1px solid beige;
+	-webkit-transform: rotateX(3deg) rotateY(3deg) rotate(-3deg) translateX(-10px);
+	-moz-transform: rotateX(3deg) rotateY(3deg) rotate(-3deg) translateX(-10px);
+	-ms-transform: rotateX(3deg) rotateY(3deg) rotate(-3deg) translateX(-10px);
+	-o-transform: rotateX(3deg) rotateY(3deg) rotate(-3deg) translateX(-10px);
+	transform: rotateX(3deg) rotateY(3deg) rotate(-3deg) translateX(-10px);
+	box-shadow: 2px 2px 16px #000;
+	margin-top: 8px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 /*
  * Custom Twitter Bootstrap style extensions
  */
@@ -28,6 +73,7 @@
 .custom-thumbnail {
 	background-color: #d5aaaa;
 	margin-left: 0px !important;
+	padding: 8px;
 }
 
 .custom-thumbnail:hover {
@@ -158,12 +204,17 @@ span.icon_clear:hover {
     opacity: 0;
     bottom: -50px;
 }
-
 .thumbnail img {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
 
+.dialog-image {
+	display: block;
+}
+.modal-body {
+	max-height: 600px;
+}
 @media (max-width: 767px) {
 	body {
 		padding: 0;
@@ -188,5 +239,14 @@ span.icon_clear:hover {
 	
 	.navbar-inner {
 		border-radius: 0;
+	}
+
+}
+
+@media (min-width: 767px) {
+	#gamestepCarousel {
+		position: absolute;
+		left: 50%;
+		margin-left: -300px;
 	}
 }

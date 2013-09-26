@@ -17,11 +17,22 @@
 			<div class="canvas">
 				<div class="img-container left">
 					<img src="{{model.step.image}}" class="left"/>
-					<div class="img-banner">After having started<span class="time">0:12</span></div>
+					<div class="img-banner">
+						<span ng-show="model.step.type == 'game-start'">After having started</span>
+						<span ng-show="model.step.type == 'milestone-1'">Milestone 1 passed!</span>
+						<span ng-show="model.step.type == 'milestone-2'">2 Milestone as well!</span>
+						<span ng-show="model.step.type == 'milestone-3'">Holy cow!?</span>
+						<span class="time">{{model.step.duration | seconds2time }}</span></div>
 				</div>
 				<div class="img-container right">
 					<img src="{{model.step.image}}" class="right"/>
-					<div class="img-banner">After having started<span class="time">0:12</span></div>
+					<div class="img-banner">
+							<span ng-show="model.step.type == 'game-start'">After having started</span>
+							<span ng-show="model.step.type == 'milestone-1'">Milestone 1 passed!</span>
+							<span ng-show="model.step.type == 'milestone-2'">2 Milestone as well!</span>
+							<span ng-show="model.step.type == 'milestone-3'">Holy cow!?</span>
+						<span class="time">{{model.step.duration | seconds2time }}</span>
+					</div>
 				</div>
 			</div>
 		</div>
