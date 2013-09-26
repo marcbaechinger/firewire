@@ -10,6 +10,8 @@
 	</head>
 	<body>
 		<div class="page" ng-show="model.gameState != 'started'">
+			<h1 class="cheattitle">Please do NOT cheat!</h1>
+			<h1 class="cheattitle">We WILL find out :-)</h1>
 			<input type="text" placeholder="{{model.inputPlaceholder}}" id="player" ng-model="model.player">
 			<button class="btn btn-inverse" start-game>Start it, dude!</button>
 		</div>
