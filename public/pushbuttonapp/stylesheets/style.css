@@ -22,7 +22,7 @@ body,
   padding: 24px;
 }
 .page .cheattitle {
-  font-size: 70px;
+  font-size: 60px;
   text-align: center;
   color: #990000;
   line-height: 1em;
@@ -33,14 +33,14 @@ body,
   text-align: center;
   height: 72px;
   width: 100%;
-  margin-top: 1em;
+  margin-top: 0.5em;
   margin-bottom: 1em;
 }
 .page button {
   font-size: 42px;
   line-height: 143px;
-  height: 412px;
-  width: 412px;
+  height: 350px;
+  width: 350px;
   display: block;
   border-radius: 50% 50% 50% 50%;
   margin-left: auto;
