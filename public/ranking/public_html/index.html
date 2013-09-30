@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ranking</title>
+        <meta name="description" content="">
+		<link rel="stylesheet" href="css/app.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    </head>
+    <body id="page">
+		<section class="page active">
+			<h1 data-action="action">Ranking</h1>
+			<div class="form">
+				<input type="search" placeholder="search by player name" data-action="search" class="search"/>
+			</div>
+			<ul class="target players">
+			</ul>
+		</section>
+		<section id="game" class="page">
+			<h2 class="game-complete">
+				<button data-action="hide-game">back</button>
+				SpielerIn: <span class="name"></span></h2>
+			<ul class="steps">
+			</ul>
+			<button data-action="hide-game">back</button>
+		</section>
+    </body>
+	<script type="text/javascript" charset="utf-8" src="js/observable.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="js/format.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="js/net.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="js/main.js"> </script>
+	<script type="text/javascript" charset="utf-8">
+	(function () {
+		var body = document.querySelector("body");
+		
+		new Application({
+			id: "page",
+			url: "ranking.json",
+			elements: {
+				"stepList": "#game .steps",
+				"name": "#game .name",
+				"search": ".search",
+				"playerList": ".target"
+			},
+			actions: {
+				"show-game": function (ev) {
+					var id = ev.target.dataset.id || ev.target.parentNode.dataset.id,
+						elements = this.elements,
+						name;
+						
+					net.getJson("data/games/steps_" + id + ".json", function (data) {
+						elements.stepList.innerHTML = data.map(function (step) {
+							var label = step.type + " - " 
+								+ format.time(step.duration);
+							name = step.player;
+							var buf = [
+								"<div class='step-image'>",
+								"<img src='",
+								step.image ,
+								"' title='" ,
+								step.type ,
+								"'/>",
+								"<label>",
+								label,
+								"</label>",
+								"</div>"
+							];
+							return buf.join("");
+						}).join("");
+						body.classList.add("show-detail");
+						elements.name.innerHTML = name;
+					});
+				},
+				"hide-game": function () {
+					body.classList.remove("show-detail");
+				}
+			},
+			changes: {
+				"search": function (ev) {
+					var query = this.elements.search.value.toLowerCase(),
+						games = this.elements.playerList.childNodes,
+						i, item, name;
+
+					ev.preventDefault();
+					ev.stopPropagation();	
+					for (i = 0; i < games.length; i++) {
+						item = games.item(i);
+						name = item.dataset.player;
+						if (name.toLowerCase().indexOf(query) < 0) {
+							item.style.display = "none";
+						} else {
+							item.style.display = "list-item";
+						}
+					}
+				}
+			}
+		});
+	}());
+	</script>
+</html>
