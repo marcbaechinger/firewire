@@ -80,7 +80,8 @@ function GameController($scope, backend, uuid, gamestepper) {
 				});
 			}
 			qrCodeGenerator.clear();
-			qrCodeGenerator.makeCode(document.location.host + "/resultapp/index.html#/results/" + $scope.model.gameId); 
+			//qrCodeGenerator.makeCode(document.location.host + "/resultapp/index.html#/results/" + $scope.model.gameId);
+			qrCodeGenerator.makeCode('http://www.facebook.com/zuehlke.group');
 		};
 		
 	logo.src = '/gameapp/img/logo.png';

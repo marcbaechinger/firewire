@@ -27,14 +27,14 @@ body,
   color: #990000;
   line-height: 1em;
 }
-.page input[type=text] {
-  font-size: 56px;
+.page input {
+  font-size: 2.5em;
   line-height: 72px;
   text-align: center;
   height: 72px;
   width: 100%;
   margin-top: 0.5em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 .page button {
   font-size: 42px;

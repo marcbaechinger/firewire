@@ -1,50 +1,91 @@
 <!DOCTYPE html>
 <html class="ng-scope" ng-app="pushbutton" ng-controller="ApplicationController">
-	<head>
-		<meta name="viewport" content="width=device-width">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<title>FireStarter</title>
-		<link rel="stylesheet" href="../common/stylesheets/bootstrap.css">
-		<link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
-		<link rel="stylesheet" href="stylesheets/style.css">
-	</head>
-	<body>
-		<div class="page" ng-show="model.gameState != 'started'">
-			<h1 class="cheattitle">Please do NOT cheat!</h1>
-			<h1 class="cheattitle">We WILL find out :-)</h1>
-			<input type="text" placeholder="{{model.inputPlaceholder}}" id="player" ng-model="model.player">
-			<button class="btn btn-inverse" start-game>Start it, dude!</button>
-		</div>
-		<div class="page" ng-show="model.gameState == 'started'">
-			<div class="canvas">
-				<div class="img-container left">
-					<img src="{{model.step.image}}" class="left"/>
-					<div class="img-banner">
-						<span ng-show="model.step.type == 'game-start'">After having started</span>
-						<span ng-show="model.step.type == 'milestone-1'">Milestone 1 passed!</span>
-						<span ng-show="model.step.type == 'milestone-2'">2 Milestone as well!</span>
-						<span ng-show="model.step.type == 'milestone-3'">Holy cow!?</span>
-						<span class="time">{{model.step.duration | seconds2time }}</span></div>
-				</div>
-				<div class="img-container right">
-					<img src="{{model.step.image}}" class="right"/>
-					<div class="img-banner">
-							<span ng-show="model.step.type == 'game-start'">After having started</span>
-							<span ng-show="model.step.type == 'milestone-1'">Milestone 1 passed!</span>
-							<span ng-show="model.step.type == 'milestone-2'">2 Milestone as well!</span>
-							<span ng-show="model.step.type == 'milestone-3'">Holy cow!?</span>
-						<span class="time">{{model.step.duration | seconds2time }}</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<script src="/socket.io/socket.io.js"></script>
-		<script src="../common/javascripts/angular.js"></script>
-		<script src="../common/javascripts/qrcode.js"></script>
-		<script src="app/app.js"></script>
-		<script src="../common/javascripts/services.js"></script>
-		<script src="app/controllers.js"></script>
-		<script src="app/filters.js"></script>
-		<script src="app/directives.js"></script>
-	</body>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>FireStarter</title>
+    <link rel="stylesheet" href="../common/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="../common/stylesheets/bootstrap-responsive.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<div class="page" ng-show="model.gameState != 'started'">
+    <!--
+    <h1 class="cheattitle">Please do NOT cheat!</h1>
+
+    <h1 class="cheattitle">We WILL find out :-)</h1>
+    -->
+    <div class="row-fluid">
+        <div class="span6">
+            <input type="text" placeholder="{{model.inputPlaceholderName}}" id="name"
+                   ng-model="model.player.name">
+        </div>
+        <div class="span6">
+            <input type="text" placeholder="{{model.inputPlaceholderEMail}}" id="eMail"
+                   ng-model="model.player.email">
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span6">
+            <input type="text" placeholder="{{model.inputPlaceholderUniversity}}" id="university"
+                   ng-model="model.player.university">
+        </div>
+
+        <div class="span6">
+            <input type="text" placeholder="{{model.inputPlaceholderFieldOfStudy}}" id="fieldOfStudy"
+                   ng-model="model.player.fieldOfStudy">
+        </div>
+
+    </div>
+    <div class="row-fluid">
+        <div class="span6">
+            <input type="number" placeholder="{{model.inputPlaceholderSemester}}" id="semester"
+                   ng-model="model.player.semester">
+        </div>
+
+        <div class="span6">
+            <label class="checkbox">
+                <input type="checkbox" id="mayUsePictures" ng-model="model.player.mayUsePictures"/>{{model.inputAllowsUseOfPicture}}
+            </label>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <button class="btn btn-inverse" start-game>Start it, dude!</button>
+    </div>
+</div>
+<div class="page" ng-show="model.gameState == 'started'">
+    <div class="canvas">
+        <div class="img-container left">
+            <img src="{{model.step.image}}" class="left"/>
+
+            <div class="img-banner">
+                <span ng-show="model.step.type == 'game-start'">After having started</span>
+                <span ng-show="model.step.type == 'milestone-1'">Milestone 1 passed!</span>
+                <span ng-show="model.step.type == 'milestone-2'">2 Milestone as well!</span>
+                <span ng-show="model.step.type == 'milestone-3'">Holy cow!?</span>
+                <span class="time">{{model.step.duration | seconds2time }}</span></div>
+        </div>
+        <div class="img-container right">
+            <img src="{{model.step.image}}" class="right"/>
+
+            <div class="img-banner">
+                <span ng-show="model.step.type == 'game-start'">After having started</span>
+                <span ng-show="model.step.type == 'milestone-1'">Milestone 1 passed!</span>
+                <span ng-show="model.step.type == 'milestone-2'">2 Milestone as well!</span>
+                <span ng-show="model.step.type == 'milestone-3'">Holy cow!?</span>
+                <span class="time">{{model.step.duration | seconds2time }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../common/javascripts/angular.js"></script>
+<script src="../common/javascripts/qrcode.js"></script>
+<script src="app/app.js"></script>
+<script src="../common/javascripts/services.js"></script>
+<script src="app/controllers.js"></script>
+<script src="app/filters.js"></script>
+<script src="app/directives.js"></script>
+</body>
 </html>

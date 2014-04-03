@@ -6,7 +6,12 @@ function ApplicationController($scope, gamestepper) {
 	
 	$scope.model = {
 		gameState: "stopped",
-		inputPlaceholder: "your name goes here"
+        inputPlaceholderName: "Name",
+        inputPlaceholderEMail: "E-Mail",
+        inputPlaceholderUniversity: "University",
+        inputPlaceholderSemester: "Semester",
+        inputPlaceholderFieldOfStudy: "Field of study (e.g. computer science)",
+        inputAllowsUseOfPicture: "My pictures may be put to further use?"
 	};
 	
 	gamestepper.register($scope, function (data) {

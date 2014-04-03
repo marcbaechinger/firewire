@@ -6,7 +6,7 @@ angular.module('pushbutton.directives', []).
 		elm.bind("click", function (ev) {
 			ev.stopPropagation();
 			ev.preventDefault();
-			if ($scope.model.player) {
+			if ($scope.model.player.name) { // we need at least a playername
 				gamestepper.emit("gamecommand", {type: "start", name: $scope.model.player});
 			} else {
 				angular.element(document.body).addClass("invalid");

@@ -36,7 +36,7 @@
 					<div class="thumbnail custom-cursor-pointer custom-thumbnail" ng-class="{'custom-background-palegreen': result.type == 'game-complete'}" onclick="location.href='#results/{{result.id}}'">
 						<img ng-src="{{result.image}}" class="img-rounded" alt="">
 						<div style="float:left;">
-							<h4 class="text-right">{{result.player}}</h4>
+							<h4 class="text-right">{{result.player.name}}</h4>
 						</div>
 						<div style="float:right;">
 							<span class="label label-inverse custom-label"># {{result.rank}}</span>
@@ -63,7 +63,7 @@
 	</div>
 	<div class="modal-body">
 		<p>
-			<strong>{{lastCompletedGame.player}} just {{lastCompletedGame.type|typeDependingMessage}}</strong> in a time of <strong>{{lastCompletedGame.duration | minute}}:{{lastCompletedGame.duration | second}}</strong> on <strong>{{lastCompletedGame.timestamp | date:'dd.MM.yyyy'}}</strong> at <strong>{{lastCompletedGame.timestamp | date:'HH:mm:ss'}}</strong> which means <strong>rank {{lastCompletedGame.rank}}</strong>.
+			<strong>{{lastCompletedGame.player.name}} just {{lastCompletedGame.type|typeDependingMessage}}</strong> in a time of <strong>{{lastCompletedGame.duration | minute}}:{{lastCompletedGame.duration | second}}</strong> on <strong>{{lastCompletedGame.timestamp | date:'dd.MM.yyyy'}}</strong> at <strong>{{lastCompletedGame.timestamp | date:'HH:mm:ss'}}</strong> which means <strong>rank {{lastCompletedGame.rank}}</strong>.
 		</p>
 		<img src="{{lastCompletedGame.image}}" class="dialog-image"/>
 	</div>
