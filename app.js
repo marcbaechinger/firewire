@@ -109,6 +109,21 @@ app.get('/admin', function (req, res) {
     });
 });
 
+var renderGameTable = function (req, res) {
+    storageProvider.getAllSortedGames(function (games) {
+        res.render('adminExport', {
+            title: 'Admin-Client',
+            games: games
+        });
+    });
+};
+app.get('/admin/export', renderGameTable)
+
+app.get('/admin/exportExcel', function(req, res) {
+	res.setHeader('content-type', 'application/vnd.ms-excel');
+	renderGameTable(req, res);
+});
+
 server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });

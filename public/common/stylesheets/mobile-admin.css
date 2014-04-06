@@ -23,17 +23,38 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
-.navbar {
-  padding-left: 20px;
+body {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.navbar-inner .brand {
+  padding-left: 40px;
 }
 h2 {
   font-size: 1em;
   padding-left: 4px;
   margin: 0;
 }
+h2 {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar {
+  background-color: #181818;
+}
+.navbar-inner {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .item-list {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  clear: both;
   list-style: none;
-  margin-left: 0;
   border-top: 2px solid #999;
   padding-top: 4px;
 }
@@ -41,7 +62,7 @@ h2 {
   position: relative;
   margin-bottom: 4px;
   border-bottom: 1px solid #999;
-  height: 1.9em;
+  height: 1.8em;
 }
 .item-list li .pic {
   display: none;
@@ -56,6 +77,85 @@ h2 {
 }
 .item-list li .rank {
   float: left;
+  height: 16px;
   margin-left: 2px;
   margin-right: 2px;
+}
+.item-list li.show-pic {
+  height: auto;
+  display: block;
+}
+.item-list li.show-pic .pic {
+  display: block;
+  margin-top: 12px;
+}
+.item-list li.show-pic .pic img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+}
+@media (max-width: 420px) {
+  .item-list li {
+    height: auto;
+    padding: 8px 20px;
+  }
+  .item-list li .rank,
+  .item-list li label,
+  .item-list li .btn {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: static;
+    float: none;
+    width: 100%;
+  }
+  .item-list li .rank {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    padding: 4px;
+    width: 24px;
+  }
+  .item-list li label {
+    padding: 4px;
+    margin-top: -6px;
+    margin-left: 16px;
+    height: 16px;
+    width: auto;
+  }
+  .item-list li .btn {
+    margin: 8px 0 0 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .item-list li .status {
+    margin-top: 4px;
+  }
+}
+@media (max-width: 1024px) {
+  body {
+    margin-top: 0;
+  }
+}
+@media (min-width: 980px) {
+  body {
+    padding-top: 40px;
+  }
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar .brand {
+    padding-left: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .navbar .brand {
+    padding-left: 26px;
+  }
 }

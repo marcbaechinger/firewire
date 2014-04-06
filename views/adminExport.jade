@@ -1,0 +1,23 @@
+html
+	head
+		title Firewire - Alle Einträge
+		link(rel='stylesheet', href='/common/stylesheets/export.css')
+	body
+		table(padding='0', spacing='0', border="0")
+			tr
+				th Rang
+				th Name
+				th Email
+				th Uni
+				th Semester
+				th Fach
+				th Publikation
+			- each game in games
+				tr(class=game.player.mayUsePictures === true ? "public" : "private")
+					td #{game.rank}
+					td #{game.player.name}
+					td #{game.player.email}
+					td #{game.player.university}
+					td #{game.player.semester}
+					td #{game.player.fieldOfStudy}
+					td #{game.player.mayUsePictures ? "ja" : "nein"}

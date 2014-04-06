@@ -8,14 +8,20 @@ block append content
 			li
 				label= client.id
 				button.btn.btn-mini.btn-inverse Disconnect
-
-	h2 Number of games played: 
+	h2.export
+		Tabellarische Übersicht aller Einträge - 
+		a.exportLink(href='/admin/export', target='_blank') Tabelle
+		|  -- 
+		a.exportLink(href='/admin/exportExcel', target='_blank') Excel 
+	h2
+		span Number of games played: 
 		span #{games.length}
 	ul.item-list
 		- each game in games
 			li
-				label= game.player
-				label #{game.type} in #{game.duration} seconds
+				label 
+					label.label(data-action='togglePic') '#{game.player.name}'
+				label.status #{game.type} in #{game.duration} seconds
 				span.rank.label.label-warning= game.rank
 				button.btn.btn-mini.btn-inverse(data-action="deleteGame", data-game="#{game.id}") Delete
 				div.pic

@@ -1,0 +1,39 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+table {
+  width: 100%;
+  border: 1px solid #999;
+  border-collapse: collapse;
+}
+table tr {
+  padding: 0;
+  font-family: sans-serif;
+}
+table tr.public {
+  background-color: rgba(0, 120, 0, 0.2);
+}
+table tr.public:hover {
+  background-color: rgba(0, 120, 0, 0.8);
+  color: #ededed;
+}
+table tr.private {
+  background-color: rgba(120, 0, 0, 0.2);
+}
+table tr.private:hover {
+  background-color: rgba(120, 0, 0, 0.8);
+  color: #ededed;
+}
+table td,
+table th {
+  padding: 4px 6px;
+  border: 1px solid #999;
+  border-collapse: collapse;
+}
+table th {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ddd;
+  padding: 8px 12px;
+}

@@ -44,7 +44,7 @@ new ApplicationController({
 			});
 		},
 		togglePic: function (target) {
-			target.parent().find(".pic").toggle();
+			target.closest("li").toggleClass("show-pic");
 		}
 	}
 });
