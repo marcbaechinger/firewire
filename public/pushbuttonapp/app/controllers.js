@@ -11,7 +11,8 @@ function ApplicationController($scope, gamestepper) {
         inputPlaceholderUniversity: "University",
         inputPlaceholderSemester: "Semester",
         inputPlaceholderFieldOfStudy: "Field of study (e.g. computer science)",
-        inputAllowsUseOfPicture: "My pictures may be put to further use?"
+        inputAllowsUseOfPicture: "My pictures may be put to further use?",
+		player: {}
 	};
 	
 	gamestepper.register($scope, function (data) {

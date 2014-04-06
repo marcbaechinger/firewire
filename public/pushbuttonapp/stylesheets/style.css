@@ -113,6 +113,6 @@ body,
   font-size: 1.1em;
   color: #ddd;
 }
-.invalid input[type=text] {
+.invalid .required {
   background-color: #e0cc86;
 }

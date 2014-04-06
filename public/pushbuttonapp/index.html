@@ -17,7 +17,7 @@
     -->
     <div class="row-fluid">
         <div class="span6">
-            <input type="text" placeholder="{{model.inputPlaceholderName}}" id="name"
+            <input type="text" class="required" placeholder="{{model.inputPlaceholderName}}" id="name"
                    ng-model="model.player.name">
         </div>
         <div class="span6">
@@ -53,7 +53,7 @@
         <button class="btn btn-inverse" start-game>Start it, dude!</button>
     </div>
 </div>
-<div class="page" ng-show="model.gameState == 'started'">
+<div class="page" ng-cloak ng-show="model.gameState == 'started'">
     <div class="canvas">
         <div class="img-container left">
             <img src="{{model.step.image}}" class="left"/>
